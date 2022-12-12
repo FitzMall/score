@@ -1,0 +1,230 @@
+﻿
+@media print {
+    *,
+    *:before,
+    *:after {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        font-size: 100% !important;
+        font-weight: lighter !important;
+        position: static !important;
+        border-left-width: 0px !important;
+        margin-left: 0;
+        margin-right: 0 !important;
+        page-break-after:
+    }
+
+    a,
+    a:visited {
+        text-decoration:none ;
+    }
+
+        a[href]:after {
+            content: " ";
+        }
+
+    #ExcelLink a[href]:after {
+        content: " ";
+        display: none;
+
+    }
+
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+        margin-left: 0 !important;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .btn > .caret,
+    .dropup > .btn > .caret {
+        border-top-color: #000 !important;
+    }
+
+    .label {
+        border: 1px solid #000;
+    }
+
+    .table-sticky th {
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 990;
+    }
+
+    .table {
+        border-collapse: collapse !important;
+        margin-left: 0 !important;
+        width: auto !important;
+    }
+
+        .table td,
+        .table th {
+            background-color: #fff !important;
+            margin-left: 0 !important;
+        }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #ddd !important;
+        margin-left: 0 !important;
+        width: 80% !important;
+    }
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+}
+
+
+td, th {
+    border: 1px solid rgb(190,190,190);
+    font-size: 125%;
+    padding: 10px 20px;
+    text-align: center;
+    margin-left: 0 !important;
+}
+
+th {
+    background-color: rgb(235,235,235);
+    position: sticky;
+    top: 50px;
+}
+
+
+#mainreportheaders th {
+    background-color: rgb(235,235,235);
+    position: sticky;
+    top: 50px;
+}
+
+    #mainreportheaders tr:nth-child(1) {
+        position: sticky;
+        top: 50px;
+    }
+    #mainreportheaders tr:nth-child(2) {
+        position: sticky;
+        top: 90px;
+    }
+
+#mainreportheaders tr:nth-child(3) {
+    position: sticky;
+    top: 130px;
+}
+
+#usedreportheaders th {
+    background-color: rgb(235,235,235);
+    position: sticky;
+    top: 50px;
+}
+
+#usedreportheaders tr:nth-child(1) {
+    position: sticky;
+    top: 50px;
+}
+
+#usedreportheaders tr:nth-child(2) {
+    position: sticky;
+    top: 90px;
+}
+
+
+td {
+    font-size: 125%;
+    text-align: center;
+}
+
+
+
+
+td:nth-child(5) {
+    text-align: right;
+}
+
+    td:nth-child(6) {
+        text-align: right;
+    }
+
+    td:nth-child(7) {
+        text-align: right;
+    }
+
+    td:nth-child(8) {
+        text-align: right;
+    }
+
+    td:nth-child(9) {
+        text-align: right;
+    }
+
+    td:nth-child(10) {
+        text-align: right;
+    }
+
+    td:nth-child(11) {
+        text-align: right;
+    }
+tr:nth-child(even) td {
+    background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+}
+
+caption {
+    padding: 10px;
+}
+
+
+
+
+
+
+

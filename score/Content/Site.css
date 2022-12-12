@@ -1,0 +1,88 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+}
+
+td, th {
+    border: 1px solid rgb(190,190,190);
+    font-size: 125%;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(235,235,235);
+}
+
+td {
+    font-size: 125%;
+    text-align: center;
+}
+
+
+
+    td:nth-child(5) {
+        text-align: right;
+    }
+
+    td:nth-child(6) {
+        text-align: right;
+    }
+
+    td:nth-child(7) {
+        text-align: right;
+    }
+
+    td:nth-child(8) {
+        text-align: right;
+    }
+
+    td:nth-child(9) {
+        text-align: right;
+    }
+
+    td:nth-child(10) {
+        text-align: right;
+    }
+
+    td:nth-child(11) {
+        text-align: right;
+    }
+
+tr:nth-child(even) td {
+    background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+}
+
+caption {
+    padding: 10px;
+}
+
