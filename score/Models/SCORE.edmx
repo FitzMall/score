@@ -18,38 +18,38 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="LOCATION" Type="char" MaxLength="20" Nullable="false" />
           <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="DAY1" Type="int" />
-          <Property Name="DAY2" Type="int" />
-          <Property Name="DAY3" Type="int" />
-          <Property Name="DAY4" Type="int" />
-          <Property Name="DAY5" Type="int" />
-          <Property Name="DAY6" Type="int" />
-          <Property Name="DAY7" Type="int" />
-          <Property Name="DAY8" Type="int" />
-          <Property Name="DAY9" Type="int" />
-          <Property Name="DAY10" Type="int" />
-          <Property Name="DAY11" Type="int" />
-          <Property Name="DAY12" Type="int" />
-          <Property Name="DAY13" Type="int" />
-          <Property Name="DAY14" Type="int" />
-          <Property Name="DAY15" Type="int" />
-          <Property Name="DAY16" Type="int" />
-          <Property Name="DAY17" Type="int" />
-          <Property Name="DAY18" Type="int" />
-          <Property Name="DAY19" Type="int" />
-          <Property Name="DAY20" Type="int" />
-          <Property Name="DAY21" Type="int" />
-          <Property Name="DAY22" Type="int" />
-          <Property Name="DAY23" Type="int" />
-          <Property Name="DAY24" Type="int" />
-          <Property Name="DAY25" Type="int" />
-          <Property Name="DAY26" Type="int" />
-          <Property Name="DAY27" Type="int" />
-          <Property Name="DAY28" Type="int" />
-          <Property Name="DAY29" Type="int" />
-          <Property Name="DAY30" Type="int" />
-          <Property Name="DAY31" Type="int" />
-          <Property Name="MTD" Type="int" />
+          <Property Name="DAY1" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY2" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY3" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY4" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY5" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY6" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY7" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY8" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY9" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY10" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY11" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY12" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY13" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY14" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY15" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY16" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY17" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY18" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY19" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY20" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY21" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY22" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY23" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY24" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY25" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY26" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY27" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY28" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY29" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY30" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="DAY31" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="MTD" Type="decimal" Precision="5" Scale="1" />
         </EntityType>
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
@@ -113,38 +113,38 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
           <Property Name="LASTNAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LOCATION" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="sl_SalesAssociate1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DAY1" Type="Int32" />
-          <Property Name="DAY2" Type="Int32" />
-          <Property Name="DAY3" Type="Int32" />
-          <Property Name="DAY4" Type="Int32" />
-          <Property Name="DAY5" Type="Int32" />
-          <Property Name="DAY6" Type="Int32" />
-          <Property Name="DAY7" Type="Int32" />
-          <Property Name="DAY8" Type="Int32" />
-          <Property Name="DAY9" Type="Int32" />
-          <Property Name="DAY10" Type="Int32" />
-          <Property Name="DAY11" Type="Int32" />
-          <Property Name="DAY12" Type="Int32" />
-          <Property Name="DAY13" Type="Int32" />
-          <Property Name="DAY14" Type="Int32" />
-          <Property Name="DAY15" Type="Int32" />
-          <Property Name="DAY16" Type="Int32" />
-          <Property Name="DAY17" Type="Int32" />
-          <Property Name="DAY18" Type="Int32" />
-          <Property Name="DAY19" Type="Int32" />
-          <Property Name="DAY20" Type="Int32" />
-          <Property Name="DAY21" Type="Int32" />
-          <Property Name="DAY22" Type="Int32" />
-          <Property Name="DAY23" Type="Int32" />
-          <Property Name="DAY24" Type="Int32" />
-          <Property Name="DAY25" Type="Int32" />
-          <Property Name="DAY26" Type="Int32" />
-          <Property Name="DAY27" Type="Int32" />
-          <Property Name="DAY28" Type="Int32" />
-          <Property Name="DAY29" Type="Int32" />
-          <Property Name="DAY30" Type="Int32" />
-          <Property Name="DAY31" Type="Int32" />
-          <Property Name="MTD" Type="Int32" />
+          <Property Name="DAY1" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY2" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY3" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY4" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY5" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY6" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY7" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY8" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY9" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY10" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY11" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY12" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY13" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY14" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY15" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY16" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY17" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY18" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY19" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY20" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY21" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY22" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY23" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY24" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY25" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY26" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY27" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY28" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY29" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY30" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="DAY31" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="MTD" Type="Decimal" Precision="5" Scale="1" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
