@@ -1,0 +1,93 @@
+﻿@model IEnumerable<score.Models.SalesBoardAllMTD>
+
+
+@{
+    ViewBag.Title = "Index";
+    string Location = ViewBag.Location;
+    string ReportDate = ViewBag.ReportDate;
+    int recordnumber = 0;
+    int DaysInMonth = ViewBag.DIM;
+    var applicationPath = Request.ApplicationPath;
+    if (applicationPath == "/")
+    {
+        applicationPath = "";
+    }
+    int sweden = 14;
+    string dave = "dave";
+    int inc = 0;
+
+    string[] a_LastName = new string[80];
+    int[] a_MTD = new int[80];
+}
+<!DOCTYPE HTML>
+<html>
+@foreach (var item in Model)
+{
+    a_LastName[inc] = item.LASTNAME;
+    a_MTD[inc] = ((int)item.MTD);
+    inc += 1;
+    if (inc > 80)
+    {
+        inc = 80;
+    }
+}
+    <head>
+        <meta charset="UTF-8">
+
+        <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+
+                title: {
+                    text: "Sales Scoreboard"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(1,77,101,.2)",
+                    gridColor: "rgba(1,77,101,.1)",
+                    title: "Number of Sales"
+                },
+                data: [{
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    color: "#014D65",
+                    dataPoints: [
+                        { y: @a_MTD[0], label: "@a_LastName[0]" },
+                        { y: @a_MTD[1], label: "@a_LastName[1]" },
+                        { y: @a_MTD[2], label: "@a_LastName[2]" },
+                        { y: @a_MTD[3], label: "@a_LastName[3]" },
+                        { y: @a_MTD[4], label: "@a_LastName[4]" },
+                        { y: @a_MTD[5], label: "@a_LastName[5]" },
+                        { y: @a_MTD[6], label: "@a_LastName[6]" },
+                        { y: @a_MTD[7], label: "@a_LastName[7]" },
+                        { y: @a_MTD[8], label: "@a_LastName[8]" },
+                        { y: @a_MTD[9], label: "@a_LastName[9]" },
+                        { y: @a_MTD[10], label: "@a_LastName[10]" },
+                        { y: @a_MTD[11], label: "@a_LastName[11]" },
+                        { y: @a_MTD[12], label: "@a_LastName[12]" },
+                        { y: @a_MTD[13], label: "@a_LastName[13]" },
+                        { y: @a_MTD[14], label: "@a_LastName[14]" },
+                        { y: @a_MTD[15], label: "@a_LastName[15]" },
+                        { y: @a_MTD[16], label: "@a_LastName[16]" },
+                        { y: @a_MTD[17], label: "@a_LastName[17]" },
+                        { y: @a_MTD[18], label: "@a_LastName[18]" },
+                        { y: @a_MTD[19], label: "@a_LastName[19]" }
+		]
+
+                }]
+            });
+            chart.render();
+
+        }
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+        <script src="../../canvasjs.min.js"></script>
+    </body>
+</html>

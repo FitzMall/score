@@ -37,6 +37,29 @@ namespace score.Views
             }
         }
 
+
+
+        public ActionResult canvasarea(string location = "")
+        {
+            DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
+            int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+
+            ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
+            ViewBag.DIM = days;
+
+            if (location != "")
+            {
+                ViewBag.Location = location;
+                return View(db.SalesBoardAllMTDs.Where(a => a.LOCATION == location).OrderByDescending(a => a.MTD).ToList());
+            }
+            else
+            {
+                ViewBag.Location = " ALL Fitzgerald";
+                return View(db.SalesBoardAllMTDs.OrderByDescending(a => a.MTD).ToList());
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
