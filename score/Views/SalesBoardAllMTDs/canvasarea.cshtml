@@ -5,26 +5,23 @@
     ViewBag.Title = "Index";
     string Location = ViewBag.Location;
     string ReportDate = ViewBag.ReportDate;
-    int recordnumber = 0;
     int DaysInMonth = ViewBag.DIM;
     var applicationPath = Request.ApplicationPath;
     if (applicationPath == "/")
     {
         applicationPath = "";
     }
-    int sweden = 14;
-    string dave = "dave";
     int inc = 0;
 
     string[] a_LastName = new string[80];
-    int[] a_MTD = new int[80];
+    decimal[] a_MTD = new decimal[80];
 }
 <!DOCTYPE HTML>
 <html>
 @foreach (var item in Model)
 {
     a_LastName[inc] = item.LASTNAME;
-    a_MTD[inc] = ((int)item.MTD);
+    a_MTD[inc] = ((decimal)item.MTD);
     inc += 1;
     if (inc > 80)
     {
@@ -76,7 +73,17 @@
                         { y: @a_MTD[16], label: "@a_LastName[16]" },
                         { y: @a_MTD[17], label: "@a_LastName[17]" },
                         { y: @a_MTD[18], label: "@a_LastName[18]" },
-                        { y: @a_MTD[19], label: "@a_LastName[19]" }
+                        { y: @a_MTD[19], label: "@a_LastName[19]" },
+                        { y: @a_MTD[20], label: "@a_LastName[20]" },
+                        { y: @a_MTD[21], label: "@a_LastName[21]" },
+                        { y: @a_MTD[22], label: "@a_LastName[22]" },
+                        { y: @a_MTD[23], label: "@a_LastName[23]" },
+                        { y: @a_MTD[24], label: "@a_LastName[24]" },
+                        { y: @a_MTD[25], label: "@a_LastName[25]" },
+                        { y: @a_MTD[26], label: "@a_LastName[26]" },
+                        { y: @a_MTD[27], label: "@a_LastName[27]" },
+                        { y: @a_MTD[28], label: "@a_LastName[28]" },
+                        { y: @a_MTD[29], label: "@a_LastName[29]" }
 		]
 
                 }]
@@ -87,7 +94,7 @@
         </script>
     </head>
     <body>
-        <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+        <div id="chartContainer" style="height: 770px; max-width: 1220px; margin: 0px auto;"></div>
         <script src="../../canvasjs.min.js"></script>
     </body>
 </html>
