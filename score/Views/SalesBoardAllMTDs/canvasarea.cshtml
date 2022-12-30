@@ -6,6 +6,12 @@
     string Location = ViewBag.Location;
     string AssociateName ="";
     string ReportDate = ViewBag.ReportDate;
+    string ReportTitle = "Sales Scoreboard";
+
+    if (Location != "")
+    {
+        ReportTitle += (" " + Location);
+    }
     int DaysInMonth = ViewBag.DIM;
     var applicationPath = Request.ApplicationPath;
     if (applicationPath == "/")
@@ -41,7 +47,7 @@
                 animationEnabled: true,
 
                 title: {
-                    text: "Sales Scoreboard"
+                    text: "@ReportTitle"
                 },
                 axisX: {
                     interval: 1,
