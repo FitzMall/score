@@ -39,7 +39,7 @@ namespace score.Views
 
 
 
-        public ActionResult canvasarea(string location = "")
+        public ActionResult BarGraph(string location = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
