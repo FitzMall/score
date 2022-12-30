@@ -51,12 +51,12 @@ namespace score.Views
             if (location != "")
             {
                 ViewBag.Location = location;
-                return View(db.SalesBoardAllMTDs.Where(a => a.LOCATION == location).OrderByDescending(a => a.MTD).ToList());
+                return View(db.SalesBoardAllMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.MTD).ToList());
             }
             else
             {
                 ViewBag.Location = " ALL Fitzgerald";
-                return View(db.SalesBoardAllMTDs.OrderByDescending(a => a.MTD).ToList());
+                return View(db.SalesBoardAllMTDs.OrderBy(a => a.MTD).ToList());
             }
         }
 
