@@ -34,13 +34,14 @@
         ViewBag.DataPoints += ",";
     }
     ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
+  //  ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" , color: \"coral\"} ";
 
     inc += 1;
 }
 
     <head>
         <meta charset="UTF-8">
-    <script>
+        <script>
         window.onload = function () {
 
             var chart = new CanvasJS.Chart("chartContainer", {
@@ -51,7 +52,7 @@
                 },
                 axisX: {
                     interval: 1,
-                    labelFontSize: 18
+                    labelFontSize: 18,
                     },
                 axisY2: {
                     interlacedColor: "rgba(1,77,101,.2)",
@@ -65,11 +66,11 @@
                     color: "#014D65",
                     dataPoints: [
                         { y: 16.5, label: "test AUZA GUZMAN" },
-                        { y: @a_MTD[39], label: "@a_AssociateName[39]" }
+                        { y: @a_MTD[39], label: "@a_AssociateName[39]", color: "red" }
                     ],
 
+                                    dataPoints: [@Html.Raw(ViewBag.DataPoints)]
 
-                dataPoints: [@Html.Raw(ViewBag.DataPoints)]
 
                 }
                 ]
@@ -79,7 +80,7 @@
             chart.render();
 
             }
-    </script>
+        </script>
     </head>
     <body>
         <div id="chartContainer" style="height: 770px; max-width: 1320px; margin: 0px auto"></div>
