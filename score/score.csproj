@@ -162,8 +162,6 @@
     <Compile Include="Views\SalesBoardAllMTDsController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="canvasjs.min.js" />
-    <Content Include="canvasjs.react.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

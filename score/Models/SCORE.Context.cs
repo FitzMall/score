@@ -33,5 +33,10 @@ namespace score.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceMTD_AllLocations_Calendar");
         }
+    
+        public virtual int sp_EmployeePerformanceMTD_AllLocations()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceMTD_AllLocations");
+        }
     }
 }

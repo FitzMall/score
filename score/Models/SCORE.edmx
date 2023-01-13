@@ -51,6 +51,7 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
           <Property Name="DAY31" Type="decimal" Precision="5" Scale="1" />
           <Property Name="MTD" Type="decimal" Precision="5" Scale="1" />
         </EntityType>
+        <Function Name="sp_EmployeePerformanceMTD_AllLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" store:Type="Tables" store:Schema="dbo">
@@ -101,6 +102,7 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
         <EntityContainer Name="SalesCommissionEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" />
           <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
+          <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations" />
         </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -195,6 +197,7 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
