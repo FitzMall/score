@@ -5,95 +5,52 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SalesCommissionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SalesBoardAllMTD">
           <Key>
-            <PropertyRef Name="FIRSTNAME" />
-            <PropertyRef Name="LASTNAME" />
-            <PropertyRef Name="LOCATION" />
             <PropertyRef Name="sl_SalesAssociate1" />
           </Key>
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="LOCATION" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="DAY1" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY2" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY3" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY4" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY5" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY6" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY7" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY8" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY9" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY10" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY11" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY12" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY13" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY14" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY15" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY16" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY17" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY18" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY19" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY20" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY21" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY22" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY23" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY24" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY25" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY26" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY27" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY28" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY29" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY30" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="DAY31" Type="decimal" Precision="5" Scale="1" />
-          <Property Name="MTD" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="VehicleMake" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="DAY1" Type="int" />
+          <Property Name="DAY2" Type="int" />
+          <Property Name="DAY3" Type="int" />
+          <Property Name="DAY4" Type="int" />
+          <Property Name="DAY5" Type="int" />
+          <Property Name="DAY6" Type="int" />
+          <Property Name="DAY7" Type="int" />
+          <Property Name="DAY8" Type="int" />
+          <Property Name="DAY9" Type="int" />
+          <Property Name="DAY10" Type="int" />
+          <Property Name="DAY11" Type="int" />
+          <Property Name="DAY12" Type="int" />
+          <Property Name="DAY13" Type="int" />
+          <Property Name="DAY14" Type="int" />
+          <Property Name="DAY15" Type="int" />
+          <Property Name="DAY16" Type="int" />
+          <Property Name="DAY17" Type="int" />
+          <Property Name="DAY18" Type="int" />
+          <Property Name="DAY19" Type="int" />
+          <Property Name="DAY20" Type="int" />
+          <Property Name="DAY21" Type="int" />
+          <Property Name="DAY22" Type="int" />
+          <Property Name="DAY23" Type="int" />
+          <Property Name="DAY24" Type="int" />
+          <Property Name="DAY25" Type="int" />
+          <Property Name="DAY26" Type="int" />
+          <Property Name="DAY27" Type="int" />
+          <Property Name="DAY28" Type="int" />
+          <Property Name="DAY29" Type="int" />
+          <Property Name="DAY30" Type="int" />
+          <Property Name="DAY31" Type="int" />
+          <Property Name="MTD" Type="int" />
         </EntityType>
         <Function Name="sp_EmployeePerformanceMTD_AllLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
-          <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SalesBoardAllMTD].[FIRSTNAME] AS [FIRSTNAME], 
-    [SalesBoardAllMTD].[LASTNAME] AS [LASTNAME], 
-    [SalesBoardAllMTD].[LOCATION] AS [LOCATION], 
-    [SalesBoardAllMTD].[sl_SalesAssociate1] AS [sl_SalesAssociate1], 
-    [SalesBoardAllMTD].[DAY1] AS [DAY1], 
-    [SalesBoardAllMTD].[DAY2] AS [DAY2], 
-    [SalesBoardAllMTD].[DAY3] AS [DAY3], 
-    [SalesBoardAllMTD].[DAY4] AS [DAY4], 
-    [SalesBoardAllMTD].[DAY5] AS [DAY5], 
-    [SalesBoardAllMTD].[DAY6] AS [DAY6], 
-    [SalesBoardAllMTD].[DAY7] AS [DAY7], 
-    [SalesBoardAllMTD].[DAY8] AS [DAY8], 
-    [SalesBoardAllMTD].[DAY9] AS [DAY9], 
-    [SalesBoardAllMTD].[DAY10] AS [DAY10], 
-    [SalesBoardAllMTD].[DAY11] AS [DAY11], 
-    [SalesBoardAllMTD].[DAY12] AS [DAY12], 
-    [SalesBoardAllMTD].[DAY13] AS [DAY13], 
-    [SalesBoardAllMTD].[DAY14] AS [DAY14], 
-    [SalesBoardAllMTD].[DAY15] AS [DAY15], 
-    [SalesBoardAllMTD].[DAY16] AS [DAY16], 
-    [SalesBoardAllMTD].[DAY17] AS [DAY17], 
-    [SalesBoardAllMTD].[DAY18] AS [DAY18], 
-    [SalesBoardAllMTD].[DAY19] AS [DAY19], 
-    [SalesBoardAllMTD].[DAY20] AS [DAY20], 
-    [SalesBoardAllMTD].[DAY21] AS [DAY21], 
-    [SalesBoardAllMTD].[DAY22] AS [DAY22], 
-    [SalesBoardAllMTD].[DAY23] AS [DAY23], 
-    [SalesBoardAllMTD].[DAY24] AS [DAY24], 
-    [SalesBoardAllMTD].[DAY25] AS [DAY25], 
-    [SalesBoardAllMTD].[DAY26] AS [DAY26], 
-    [SalesBoardAllMTD].[DAY27] AS [DAY27], 
-    [SalesBoardAllMTD].[DAY28] AS [DAY28], 
-    [SalesBoardAllMTD].[DAY29] AS [DAY29], 
-    [SalesBoardAllMTD].[DAY30] AS [DAY30], 
-    [SalesBoardAllMTD].[DAY31] AS [DAY31], 
-    [SalesBoardAllMTD].[MTD] AS [MTD]
-    FROM [dbo].[SalesBoardAllMTD] AS [SalesBoardAllMTD]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -101,60 +58,59 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
       <Schema Namespace="SalesCommissionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SalesCommissionEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" />
-          <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations" />
-        </EntityContainer>
+          <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
+          </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
-            <PropertyRef Name="FIRSTNAME" />
-            <PropertyRef Name="LASTNAME" />
-            <PropertyRef Name="LOCATION" />
             <PropertyRef Name="sl_SalesAssociate1" />
           </Key>
           <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LASTNAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="LOCATION" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="LOCATION" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="sl_SalesAssociate1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DAY1" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY2" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY3" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY4" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY5" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY6" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY7" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY8" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY9" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY10" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY11" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY12" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY13" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY14" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY15" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY16" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY17" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY18" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY19" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY20" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY21" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY22" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY23" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY24" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY25" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY26" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY27" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY28" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY29" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY30" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="DAY31" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="MTD" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="VehicleMake" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="DAY1" Type="Int32" />
+          <Property Name="DAY2" Type="Int32" />
+          <Property Name="DAY3" Type="Int32" />
+          <Property Name="DAY4" Type="Int32" />
+          <Property Name="DAY5" Type="Int32" />
+          <Property Name="DAY6" Type="Int32" />
+          <Property Name="DAY7" Type="Int32" />
+          <Property Name="DAY8" Type="Int32" />
+          <Property Name="DAY9" Type="Int32" />
+          <Property Name="DAY10" Type="Int32" />
+          <Property Name="DAY11" Type="Int32" />
+          <Property Name="DAY12" Type="Int32" />
+          <Property Name="DAY13" Type="Int32" />
+          <Property Name="DAY14" Type="Int32" />
+          <Property Name="DAY15" Type="Int32" />
+          <Property Name="DAY16" Type="Int32" />
+          <Property Name="DAY17" Type="Int32" />
+          <Property Name="DAY18" Type="Int32" />
+          <Property Name="DAY19" Type="Int32" />
+          <Property Name="DAY20" Type="Int32" />
+          <Property Name="DAY21" Type="Int32" />
+          <Property Name="DAY22" Type="Int32" />
+          <Property Name="DAY23" Type="Int32" />
+          <Property Name="DAY24" Type="Int32" />
+          <Property Name="DAY25" Type="Int32" />
+          <Property Name="DAY26" Type="Int32" />
+          <Property Name="DAY27" Type="Int32" />
+          <Property Name="DAY28" Type="Int32" />
+          <Property Name="DAY29" Type="Int32" />
+          <Property Name="DAY30" Type="Int32" />
+          <Property Name="DAY31" Type="Int32" />
+          <Property Name="MTD" Type="Int32" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SalesCommissionModelStoreContainer" CdmEntityContainer="SalesCommissionEntities" >
           <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations_Calendar" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations_Calendar" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations" />
           <EntitySetMapping Name="SalesBoardAllMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.SalesBoardAllMTD">
               <MappingFragment StoreEntitySet="SalesBoardAllMTD">
@@ -190,6 +146,7 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
                 <ScalarProperty Name="DAY3" ColumnName="DAY3" />
                 <ScalarProperty Name="DAY2" ColumnName="DAY2" />
                 <ScalarProperty Name="DAY1" ColumnName="DAY1" />
+                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
                 <ScalarProperty Name="sl_SalesAssociate1" ColumnName="sl_SalesAssociate1" />
                 <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
@@ -197,8 +154,7 @@ warning 6002: The table/view 'SalesCommission.dbo.SalesBoardAllMTD' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

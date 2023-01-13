@@ -19,9 +19,10 @@
         applicationPath = "";
     }
     int inc = 0;
+    string salesID = "";
     ViewBag.DataPoints = "";
-    string[] a_AssociateName = new string[280];
-    decimal[] a_MTD = new decimal[280];
+    string[] a_AssociateName = new string[980];
+    decimal[] a_MTD = new decimal[980];
 }
 <!DOCTYPE HTML>
 <html>
@@ -33,10 +34,18 @@
     {
         ViewBag.DataPoints += ",";
     }
-    ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
-  //  ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" , color: \"coral\"} ";
+
+    if (item.sl_SalesAssociate1 != salesID)
+    {
+        ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
+        //  ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" , color: \"coral\"} ";
+    } else
+    {
+        ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
+    }
 
     inc += 1;
+    salesID = item.sl_SalesAssociate1;
 }
 
     <head>
@@ -60,8 +69,9 @@
                 },
                 data: [{
                     indexLabelFontSize: 6,
-                    type: "bar",
-                    name: "companies",
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "Sales",
                     axisYType: "secondary",
                     color: "#014D65",
                     dataPoints: [
