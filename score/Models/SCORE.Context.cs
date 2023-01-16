@@ -27,6 +27,7 @@ namespace score.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<EmployeePerformanceMTD> EmployeePerformanceMTDs { get; set; }
         public virtual DbSet<SalesBoardAllMTD> SalesBoardAllMTDs { get; set; }
     
         public virtual int sp_EmployeePerformanceMTD_AllLocations_Calendar()

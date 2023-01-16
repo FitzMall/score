@@ -5,9 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SalesCommissionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmployeePerformanceMTD">
+          <Key>
+            <PropertyRef Name="SalesID" />
+          </Key>
+          <Property Name="SalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" />
+          <Property Name="VehicleMake" Type="varchar" MaxLength="50" />
+          <Property Name="MTD" Type="int" />
+          <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" />
+          <Property Name="LASTNAME" Type="varchar" MaxLength="25" />
+          <Property Name="LOCATION" Type="char" MaxLength="20" />
+        </EntityType>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="LOCATION" />
             <PropertyRef Name="sl_SalesAssociate1" />
+            <PropertyRef Name="VehicleMake" />
           </Key>
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" Nullable="false" />
@@ -47,10 +65,20 @@
           <Property Name="DAY31" Type="int" />
           <Property Name="MTD" Type="int" />
         </EntityType>
-        <Function Name="sp_EmployeePerformanceMTD_AllLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeePerformanceMTD" EntityType="Self.EmployeePerformanceMTD" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeePerformanceMTD].[SalesID] AS [SalesID], 
+    [EmployeePerformanceMTD].[sl_SalesAssociate1] AS [sl_SalesAssociate1], 
+    [EmployeePerformanceMTD].[VehicleMake] AS [VehicleMake], 
+    [EmployeePerformanceMTD].[MTD] AS [MTD], 
+    [EmployeePerformanceMTD].[FIRSTNAME] AS [FIRSTNAME], 
+    [EmployeePerformanceMTD].[LASTNAME] AS [LASTNAME], 
+    [EmployeePerformanceMTD].[LOCATION] AS [LOCATION]
+    FROM [dbo].[EmployeePerformanceMTD] AS [EmployeePerformanceMTD]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -59,11 +87,28 @@
         <EntityContainer Name="SalesCommissionEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" />
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations" />
+          <EntitySet Name="EmployeePerformanceMTDs" EntityType="SalesCommissionModel.EmployeePerformanceMTD" />
           <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
           </EntityContainer>
+        <EntityType Name="EmployeePerformanceMTD">
+          <Key>
+            <PropertyRef Name="SalesID" />
+          </Key>
+          <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sl_SalesAssociate1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleMake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MTD" Type="Int32" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="LOCATION" />
             <PropertyRef Name="sl_SalesAssociate1" />
+            <PropertyRef Name="VehicleMake" />
           </Key>
           <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LASTNAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
@@ -110,7 +155,19 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SalesCommissionModelStoreContainer" CdmEntityContainer="SalesCommissionEntities" >
           <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations_Calendar" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations_Calendar" />
-          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations" />
+          <EntitySetMapping Name="EmployeePerformanceMTDs">
+            <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
+              <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MTD" ColumnName="MTD" />
+                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+                <ScalarProperty Name="sl_SalesAssociate1" ColumnName="sl_SalesAssociate1" />
+                <ScalarProperty Name="SalesID" ColumnName="SalesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SalesBoardAllMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.SalesBoardAllMTD">
               <MappingFragment StoreEntitySet="SalesBoardAllMTD">

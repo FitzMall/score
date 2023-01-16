@@ -140,6 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeePerformanceMTD.cs">
+      <DependentUpon>SCORE.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SalesBoardAllMTD.cs">
       <DependentUpon>SCORE.tt</DependentUpon>
     </Compile>
@@ -218,6 +221,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\Index.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\BarGraph.cshtml" />
+    <Content Include="Views\SalesBoardAllMTDs\MultiBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

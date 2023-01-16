@@ -38,25 +38,36 @@ namespace score.Views
         }
 
 
+        public ActionResult MultiBar(string location = "")
+        {
+            return View();
+        }
 
-        public ActionResult BarGraph(string location = "")
+
+            public ActionResult BarGraph(string location = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-
+            
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
 
-            if (location != "")
+            if (location == "")
+            {
+                location = "FTO";
+                    }
+
+
+                if (location != "")
             {
                 ViewBag.Location = location;
-                return View(db.SalesBoardAllMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.MTD).ToList());
+                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.sl_SalesAssociate1).ToList());
             }
             else
             {
                 ViewBag.Location = " ALL Fitzgerald";
-                return View(db.SalesBoardAllMTDs.OrderBy(a => a.MTD).ToList());
+                return View(db.EmployeePerformanceMTDs.OrderBy(a => a.sl_SalesAssociate1).ToList());
             }
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<score.Models.SalesBoardAllMTD>
+﻿@model IEnumerable<score.Models.EmployeePerformanceMTD>
 
 
 @{
@@ -19,8 +19,11 @@
         applicationPath = "";
     }
     int inc = 0;
+    int inc_DataPoints = 0;
+    int inc_DataPoints2 = 0;
     string salesID = "";
     ViewBag.DataPoints = "";
+    ViewBag.DataPoints2 = "";
     string[] a_AssociateName = new string[980];
     decimal[] a_MTD = new decimal[980];
 }
@@ -30,21 +33,30 @@
 {
     AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
     a_MTD[inc] = ((decimal)item.MTD);
-    if (inc > 0)
-    {
-        ViewBag.DataPoints += ",";
-    }
 
     if (item.sl_SalesAssociate1 != salesID)
     {
-        ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
+        if (inc_DataPoints > 0)
+        {
+            ViewBag.DataPoints += ",";
+        }
+        ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" +  AssociateName + "\" } ";
         //  ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" , color: \"coral\"} ";
-    } else
+        inc_DataPoints += 1;
+    }
+    else
     {
-        ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" } ";
+        if (inc_DataPoints2 > 0)
+        {
+            ViewBag.DataPoints2 += ",";
+        }
+        ViewBag.DataPoints2 += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + " } ";
+        inc_DataPoints2 += 1;
     }
 
+
     inc += 1;
+
     salesID = item.sl_SalesAssociate1;
 }
 
@@ -71,15 +83,29 @@
                     indexLabelFontSize: 6,
                     type: "stackedBar",
                     showInLegend: "true",
-                    name: "Sales",
-                    axisYType: "secondary",
-                    color: "#014D65",
+                    name: "New",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                color: "#014D65",
                     dataPoints: [
-                        { y: 16.5, label: "test AUZA GUZMAN" },
-                        { y: @a_MTD[39], label: "@a_AssociateName[39]", color: "red" }
+                        { y: 16.5, label: "test" }
                     ],
 
                                     dataPoints: [@Html.Raw(ViewBag.DataPoints)]
+
+
+                },
+                    { type: "stackedBar",
+                    showInLegend: "true",
+                    name: "Used",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                    color: "cyan",
+                    dataPoints: [
+                        { y: 16.5, label: "test" }
+                    ],
+
+                                    dataPoints: [@Html.Raw(ViewBag.DataPoints2)]
 
 
                 }
