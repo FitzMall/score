@@ -1,0 +1,704 @@
+﻿@model IEnumerable<score.Models.EmployeePerformanceMTD>
+
+
+@{
+    ViewBag.Title = "Index";
+    string Location = ViewBag.Location;
+    string AssociateName = "";
+    string ReportDate = ViewBag.ReportDate;
+    string ReportTitle = "Sales Scoreboard";
+
+    if (Location != "")
+    {
+        ReportTitle += (" " + Location);
+    }
+    int DaysInMonth = ViewBag.DIM;
+    var applicationPath = Request.ApplicationPath;
+    if (applicationPath == "/")
+    {
+        applicationPath = "";
+    }
+    int inc = 0;
+    int inc_DataPoints = 0;
+    int inc_DataPoints2 = 0;
+    int inc_DataPoints3 = 0;
+    int inc_DataPoints4 = 0;
+    int inc_DataPoints5 = 0;
+    int inc_DataPoints6 = 0;
+    int inc_DataPoints7 = 0;
+    int inc_DataPoints8 = 0;
+    int inc_DataPoints9 = 0;
+
+
+
+    string salespersonID = "";
+    string savedAssociateName = "";
+    ViewBag.DataPoints = "";
+    ViewBag.DataPoints2 = "";
+    ViewBag.DataPoints3 = "";
+    ViewBag.DataPoints4 = "";
+    ViewBag.DataPoints5 = "";
+    ViewBag.DataPoints6 = "";
+    ViewBag.DataPoints7 = "";
+    ViewBag.DataPoints8 = "";
+    ViewBag.DataPoints9 = "";
+
+    string[] a_AssociateName = new string[980];
+    decimal[] a_MTD = new decimal[980];
+}
+<!DOCTYPE HTML>
+<html>
+@foreach (var item in Model)
+{
+    AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+    a_MTD[inc] = ((decimal)item.MTD);
+    string colorBrand = "RosyBrown";
+    string colorBrandFont = "black";
+
+    switch ((string)item.VehicleMake)
+    {
+        case "ACURA":
+            colorBrand = "IndianRed";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "AUDI":
+            colorBrand = "DarkSalmon";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "BMW":
+            colorBrand = "PaleVioletRed";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "BMW SAV":
+            colorBrand = "PaleVioletRed";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "BUICK":
+            colorBrand = "MediumVioletRed";
+            if (inc_DataPoints3 > 0)
+            {
+                ViewBag.DataPoints3 += ",";
+            }
+
+
+            ViewBag.DataPoints3 += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints3 += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints3 += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints3 += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints3 += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+
+            break;
+        case "CADILLAC":
+            colorBrand = "Tomato";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "CHEVROLET":
+            colorBrand = "DarkOrange";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "CHRYSLER":
+            colorBrand = "Orange";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "DODGE":
+            colorBrand = "PaleVioletRed";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "FORD":
+            colorBrand = "Gold";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "GENESIS":
+            colorBrand = "Khaki";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "HONDA":
+            colorBrand = "DarkKhaki";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "HYUNDAI":
+            colorBrand = "Yellow";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "INFINITI":
+            colorBrand = "Thistle";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "JAGUAR":
+            colorBrand = "MediumPurple";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "JEEP":
+            colorBrand = "OliveDrab";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "KIA":
+            colorBrand = "SpringGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "LAND ROVER":
+            colorBrand = "LightGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "LEXUS":
+            colorBrand = "MediumSeaGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "LINCOLN":
+            colorBrand = "ForestGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "MAZDA":
+            colorBrand = "Chartreuse";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "MERCEDES LIGHT":
+            colorBrand = "MediumSeaGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "MERCEDES-BENZ":
+            colorBrand = "MediumSpringGreen";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "MITSUBISHI":
+            colorBrand = "Teal";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "NISSAN":
+            colorBrand = "Aquamarine";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "RAM":
+            colorBrand = "SteelBlue";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "SAAB":
+            colorBrand = "PaleTurquoise";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "SUBARU":
+            colorBrand = "DodgerBlue";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "TESLA":
+            colorBrand = "DarkBlue";
+            colorBrandFont = "white";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "TOYOTA":
+            colorBrand = "Tan";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "VOLKSWAGEN":
+            colorBrand = "Chocolate";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+        case "USED":
+            colorBrand = "Chocolate";
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+
+            ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints += ", indexLabel: \"" + (string)item.VehicleMake + "\" ,";
+            ViewBag.DataPoints += " indexLabelFontColor: \"" + colorBrandFont + "\" ";
+            ViewBag.DataPoints += ", indexLabelFontSize: 16 ";
+            ViewBag.DataPoints += ", indexLabelOrientation: \"horizontal\", indexLabelPlacement: \"inside\"}";
+            inc_DataPoints += 1;
+            break;
+    };
+
+    inc_DataPoints += 1;
+    inc += 1;
+
+    salespersonID = item.sl_SalesAssociate1;
+    savedAssociateName = AssociateName;
+}
+
+<head>
+    @ViewBag.DataPoints  @ViewBag.DataPoints2
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+
+                title: {
+    text: "@ReportTitle"
+                },
+                axisX: {
+    interval: 1,
+                    labelFontSize: 18,
+                    },
+                axisY2: {
+    interlacedColor: "rgba(1,77,101,.2)",
+                    gridColor: "rgba(1,77,101,.1)",
+                },
+                data: [{
+    indexLabelFontSize: 16,
+                    type: "bar",
+                    showInLegend: "false",
+                    name: "",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                color: "#014D65",
+                                    dataPoints: [@Html.Raw(ViewBag.DataPoints)]
+
+
+                },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "IndianRed",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints2)]
+                    }
+                                    ,
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "SpringGreen",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints3)]
+                    },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "Thistle",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints4)]
+                    },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "MediumSeaGreen",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints5)]
+                    },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "cyan",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints6)]
+                    },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "cyan",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints7)]
+                    },
+                    {
+                        type: "bar",
+                        showInLegend: "false",
+                        name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "Teal",
+                        dataPoints: [@Html.Raw(ViewBag.DataPoints8)]
+                    },
+                    { type: "bar",
+                    showInLegend: "false",
+                    name: "",
+                        xValueFormatString: "string",
+                        yValueFormatString: "#",
+                        color: "PaleTurquoise",
+                                    dataPoints: [@Html.Raw(ViewBag.DataPoints9)]
+
+                }
+                ]
+            });
+
+
+                            chart.render();
+
+                        }
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 770px; max-width: 1320px; margin: 0px auto"></div>
+    <script src="../scripts/canvasjs.min.js"></script>
+</body>
+</html>

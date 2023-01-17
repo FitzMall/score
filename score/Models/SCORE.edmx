@@ -15,6 +15,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" />
           <Property Name="VehicleMake" Type="varchar" MaxLength="50" />
           <Property Name="MTD" Type="int" />
+          <Property Name="sl_VehicleNU" Type="varchar" MaxLength="5" />
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LOCATION" Type="char" MaxLength="20" />
@@ -74,6 +75,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
     [EmployeePerformanceMTD].[sl_SalesAssociate1] AS [sl_SalesAssociate1], 
     [EmployeePerformanceMTD].[VehicleMake] AS [VehicleMake], 
     [EmployeePerformanceMTD].[MTD] AS [MTD], 
+    [EmployeePerformanceMTD].[sl_VehicleNU] AS [sl_VehicleNU], 
     [EmployeePerformanceMTD].[FIRSTNAME] AS [FIRSTNAME], 
     [EmployeePerformanceMTD].[LASTNAME] AS [LASTNAME], 
     [EmployeePerformanceMTD].[LOCATION] AS [LOCATION]
@@ -101,6 +103,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="FIRSTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LASTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="sl_VehicleNU" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -158,6 +161,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <EntitySetMapping Name="EmployeePerformanceMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
               <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
+                <ScalarProperty Name="sl_VehicleNU" ColumnName="sl_VehicleNU" />
                 <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
                 <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
