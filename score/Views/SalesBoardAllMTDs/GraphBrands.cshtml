@@ -173,7 +173,6 @@
 }
 
 <head>
-    @ViewBag.DataPoints  @ViewBag.DataPoints2
     <meta charset="UTF-8">
     <script>
         window.onload = function () {
@@ -195,7 +194,7 @@
                 data: [{
     indexLabelFontSize: 16,
                     type: "stackedBar",
-                    showInLegend: "false",
+                    showInLegend: "true",
                     name: "",
                     xValueFormatString: "string",
                     yValueFormatString: "#",
@@ -205,7 +204,7 @@
 
                 },
                     { type: "stackedBar",
-                    showInLegend: "false",
+                    showInLegend: "true",
                     name: "",
                         xValueFormatString: "string",
                         yValueFormatString: "#",
@@ -224,6 +223,27 @@
     </script>
 </head>
 <body>
+
+    VEHICLE TYPE 1
+    @ViewBag.DataPoints<br />
+    VEHICLE TYPE 2
+    @ViewBag.DataPoints2<br />
+    VEHICLE TYPE 3
+    @ViewBag.DataPoints3<br />
+    VEHICLE TYPE 4
+    @ViewBag.DataPoints4<br />
+    VEHICLE TYPE 5
+    @ViewBag.DataPoints5<br />
+    VEHICLE TYPE 6
+    @ViewBag.DataPoints6<br />
+    VEHICLE TYPE 7
+    @ViewBag.DataPoints7<br />
+    VEHICLE TYPE 8
+    @ViewBag.DataPoints8<br />
+    VEHICLE TYPE 9
+    @ViewBag.DataPoints9<br />
+
+
     <div id="chartContainer" style="height: 770px; max-width: 1320px; margin: 0px auto"></div>
     <script src="../scripts/canvasjs.min.js"></script>
 </body>

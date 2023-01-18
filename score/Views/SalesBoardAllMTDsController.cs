@@ -117,12 +117,12 @@ namespace score.Views
             if (location != "")
             {
                 ViewBag.Location = location;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.sl_SalesAssociate1 + a.VehicleMake).ToList());
+                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
             else
             {
                 ViewBag.Location = " ALL Fitzgerald";
-                return View(db.EmployeePerformanceMTDs.OrderBy(a => a.sl_SalesAssociate1 + a.VehicleMake).ToList());
+                return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
         }
         protected override void Dispose(bool disposing)

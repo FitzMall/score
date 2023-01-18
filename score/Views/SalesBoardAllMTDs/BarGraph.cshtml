@@ -40,7 +40,7 @@
         {
             ViewBag.DataPoints += ",";
         }
-        ViewBag.DataPoints += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + ", label: \"" +  AssociateName + "\" } ";
+        ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" +  AssociateName + "\" } ";
         //  ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" , color: \"coral\"} ";
         inc_DataPoints += 1;
     }
@@ -50,7 +50,7 @@
         {
             ViewBag.DataPoints2 += ",";
         }
-        ViewBag.DataPoints2 += "{ x: " + inc_DataPoints + ", y: " + ((decimal)item.MTD) + " } ";
+        ViewBag.DataPoints2 += "{  y: " + ((decimal)item.MTD) + " } ";
         inc_DataPoints2 += 1;
     }
 
