@@ -15,7 +15,6 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" />
           <Property Name="VehicleMake" Type="varchar" MaxLength="50" />
           <Property Name="MTD" Type="int" />
-          <Property Name="sl_VehicleNU" Type="varchar" MaxLength="5" />
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LOCATION" Type="char" MaxLength="20" />
@@ -75,7 +74,6 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
     [EmployeePerformanceMTD].[sl_SalesAssociate1] AS [sl_SalesAssociate1], 
     [EmployeePerformanceMTD].[VehicleMake] AS [VehicleMake], 
     [EmployeePerformanceMTD].[MTD] AS [MTD], 
-    [EmployeePerformanceMTD].[sl_VehicleNU] AS [sl_VehicleNU], 
     [EmployeePerformanceMTD].[FIRSTNAME] AS [FIRSTNAME], 
     [EmployeePerformanceMTD].[LASTNAME] AS [LASTNAME], 
     [EmployeePerformanceMTD].[LOCATION] AS [LOCATION]
@@ -89,22 +87,9 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
         <EntityContainer Name="SalesCommissionEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" />
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations" />
-          <EntitySet Name="EmployeePerformanceMTDs" EntityType="SalesCommissionModel.EmployeePerformanceMTD" />
           <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
+          <EntitySet Name="EmployeePerformanceMTDs" EntityType="SalesCommissionModel.EmployeePerformanceMTD" />
           </EntityContainer>
-        <EntityType Name="EmployeePerformanceMTD">
-          <Key>
-            <PropertyRef Name="SalesID" />
-          </Key>
-          <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sl_SalesAssociate1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleMake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MTD" Type="Int32" />
-          <Property Name="FIRSTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="LASTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
-          <Property Name="sl_VehicleNU" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
             <PropertyRef Name="FIRSTNAME" />
@@ -151,6 +136,18 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="DAY31" Type="Int32" />
           <Property Name="MTD" Type="Int32" />
         </EntityType>
+        <EntityType Name="EmployeePerformanceMTD">
+          <Key>
+            <PropertyRef Name="SalesID" />
+          </Key>
+          <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sl_SalesAssociate1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleMake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MTD" Type="Int32" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -158,20 +155,6 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SalesCommissionModelStoreContainer" CdmEntityContainer="SalesCommissionEntities" >
           <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_AllLocations_Calendar" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_AllLocations_Calendar" />
-          <EntitySetMapping Name="EmployeePerformanceMTDs">
-            <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
-              <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
-                <ScalarProperty Name="sl_VehicleNU" ColumnName="sl_VehicleNU" />
-                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
-                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
-                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
-                <ScalarProperty Name="MTD" ColumnName="MTD" />
-                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
-                <ScalarProperty Name="sl_SalesAssociate1" ColumnName="sl_SalesAssociate1" />
-                <ScalarProperty Name="SalesID" ColumnName="SalesID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SalesBoardAllMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.SalesBoardAllMTD">
               <MappingFragment StoreEntitySet="SalesBoardAllMTD">
@@ -212,6 +195,19 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
                 <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
                 <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePerformanceMTDs">
+            <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
+              <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MTD" ColumnName="MTD" />
+                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+                <ScalarProperty Name="sl_SalesAssociate1" ColumnName="sl_SalesAssociate1" />
+                <ScalarProperty Name="SalesID" ColumnName="SalesID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

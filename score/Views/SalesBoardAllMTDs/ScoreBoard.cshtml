@@ -57,6 +57,9 @@
 }
 <!DOCTYPE HTML>
 <html>
+
+
+
 @foreach (var item in Model)
 {
     AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
@@ -75,17 +78,17 @@
             inc_DataPoints7 += 1;
             break;
         case "BUICK":
-            if (inc_DataPoints3 > 0)
+            if (inc_DataPoints6 > 0)
             {
-                ViewBag.DataPoints3 += ",";
+                ViewBag.DataPoints6 += ",";
             }
 
 
-            ViewBag.legend3 = ((string)item.VehicleMake);
-            ViewBag.DataPoints3 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.legend6 = ((string)item.VehicleMake);
+            ViewBag.DataPoints6 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints3 += "}";
-            inc_DataPoints3 += 1;
+            ViewBag.DataPoints6 += "}";
+            inc_DataPoints6 += 1;
 
             break;
         case "CADILLAC":
@@ -155,30 +158,30 @@
             break;
 
         case "GMC":
-            if (inc_DataPoints2 > 0)
+            if (inc_DataPoints4 > 0)
             {
-                ViewBag.DataPoints2 += ",";
+                ViewBag.DataPoints4 += ",";
             }
 
-            ViewBag.legend2 = ((string)item.VehicleMake);
+            ViewBag.legend4 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints4 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints2 += "}";
-            inc_DataPoints2 += 1;
+            ViewBag.DataPoints4 += "}";
+            inc_DataPoints4 += 1;
             break;
         case "HYUNDAI":
-            if (inc_DataPoints > 0)
+            if (inc_DataPoints7 > 0)
             {
-                ViewBag.DataPoints += ",";
+                ViewBag.DataPoints7 += ",";
             }
 
-            ViewBag.legend1 = ((string)item.VehicleMake);
+            ViewBag.legend7 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints += "}";
-            inc_DataPoints += 1;
+            ViewBag.DataPoints7 += "}";
+            inc_DataPoints7 += 1;
             break;
         case "INFINITI":
             if (inc_DataPoints > 0)
@@ -208,17 +211,17 @@
             break;
 
         case "LEXUS":
-            if (inc_DataPoints > 0)
+            if (inc_DataPoints8 > 0)
             {
-                ViewBag.DataPoints += ",";
+                ViewBag.DataPoints8 += ",";
             }
 
-            ViewBag.legend1 = ((string)item.VehicleMake);
+            ViewBag.legend8 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints8 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints += "}";
-            inc_DataPoints += 1;
+            ViewBag.DataPoints8 += "}";
+            inc_DataPoints8 += 1;
             break;
         case "MAZDA":
             if (inc_DataPoints > 0)
@@ -333,15 +336,32 @@
     savedAssociateName = AssociateName;
 
     if (savedAssociateName == "")
-                {
-                    //save for insertion where absent
-                }
+    {
+        //save for insertion where absent
+    }
 
 }
 
 
 <head>
-
+    @ViewBag.DataPoints
+    -------------------------
+    @ViewBag.DataPoints2
+    -------------------------
+    @ViewBag.DataPoints3
+    -------------------------
+    @ViewBag.DataPoints4
+    -------------------------
+    @ViewBag.DataPoints5
+    -------------------------
+    @ViewBag.DataPoints6
+    -------------------------
+    @ViewBag.DataPoints7
+    -------------------------
+    @ViewBag.DataPoints8
+    -------------------------
+    @ViewBag.DataPoints9
+    -------------------------
     <meta charset="UTF-8">
     <script>
         window.onload = function () {

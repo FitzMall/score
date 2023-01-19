@@ -117,7 +117,7 @@ namespace score.Views
             if (location != "")
             {
                 ViewBag.Location = location;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderByDescending(a => a.sl_SalesAssociate1).ToList());
+                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.SalesID).ToList());
             }
             else
             {
