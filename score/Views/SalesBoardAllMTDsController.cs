@@ -24,6 +24,7 @@ namespace score.Views
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
+            location = location.ToUpper();
 
             if (location != "")
             {
@@ -52,10 +53,11 @@ namespace score.Views
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
+            location = location.ToUpper();
 
             if (location == "")
             {
-                location = "FTO";
+                location = "FTN";
                     }
 
 
@@ -79,10 +81,11 @@ namespace score.Views
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
+            location = location.ToUpper();
 
             if (location == "")
             {
-                location = "FTO";
+                location = "FTN";
             }
 
 
@@ -107,10 +110,11 @@ namespace score.Views
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
+            location = location.ToUpper();
 
             if (location == "")
             {
-                location = "FTO";
+                location = "FTN";
             }
 
 
