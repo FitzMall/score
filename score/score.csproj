@@ -222,7 +222,6 @@
     <Content Include="Views\SalesBoardAllMTDs\Index.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\BarGraph.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\MultiBar.cshtml" />
-    <Content Include="Views\SalesBoardAllMTDs\GraphBrands.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\ScoreBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
