@@ -92,17 +92,17 @@
 
             break;
         case "CADILLAC":
-            if (inc_DataPoints > 0)
+            if (inc_DataPoints6 > 0)
             {
-                ViewBag.DataPoints += ",";
+                ViewBag.DataPoints6 += ",";
             }
 
-            ViewBag.legend1 = ((string)item.VehicleMake);
+            ViewBag.legend6 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints6 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints += "}";
-            inc_DataPoints += 1;
+            ViewBag.DataPoints6 += "}";
+            inc_DataPoints6 += 1;
             break;
         case "CHEVROLET":
             if (inc_DataPoints7 > 0)
@@ -118,29 +118,29 @@
             inc_DataPoints7 += 1;
             break;
         case "CHRYSLER":
-            if (inc_DataPoints > 0)
+            if (inc_DataPoints8 > 0)
             {
-                ViewBag.DataPoints += ",";
+                ViewBag.DataPoints8 += ",";
             }
-            ViewBag.legend1 = ((string)item.VehicleMake);
+            ViewBag.legend8 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints8 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints += "}";
-            inc_DataPoints += 1;
+            ViewBag.DataPoints8 += "}";
+            inc_DataPoints8 += 1;
             break;
         case "DODGE":
-            if (inc_DataPoints2 > 0)
+            if (inc_DataPoints5 > 0)
             {
-                ViewBag.DataPoints2 += ",";
+                ViewBag.DataPoints5 += ",";
             }
 
-            ViewBag.legend2 = ((string)item.VehicleMake);
+            ViewBag.legend5 = ((string)item.VehicleMake);
 
-            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints5 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-            ViewBag.DataPoints2 += "}";
-            inc_DataPoints2 += 1;
+            ViewBag.DataPoints5 += "}";
+            inc_DataPoints5 += 1;
             break;
 
         case "GENESIS":
@@ -360,6 +360,7 @@
                     labelFontSize: 18,
                 },
                 axisY: {
+                    interval: 1,
                     labelFontSize: 18,
                 }, axisY2: {
                     interlacedColor: "rgba(1,77,101,.2)",
