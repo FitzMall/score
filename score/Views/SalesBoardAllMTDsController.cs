@@ -101,6 +101,34 @@ namespace score.Views
                 return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
         }
+        public ActionResult TeamScoreBoard(string TeamDeptCode = "")
+        {
+            DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
+            int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+
+            ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
+            ViewBag.DIM = days;
+            TeamDeptCode = TeamDeptCode.Trim().ToUpper();
+
+            if (TeamDeptCode == "")
+            {
+                TeamDeptCode = "AWSL01";
+            }
+
+
+            if (TeamDeptCode != "")
+            {
+                ViewBag.Team = db.EmployeePerformanceMTDs.Where(a => a.dept_code == TeamDeptCode).First().SalesTeam;
+                return View(db.EmployeePerformanceMTDs.Where(a => a.dept_code == TeamDeptCode).OrderBy(a => a.SalesRank).ToList());
+            }
+            else
+            {
+                ViewBag.Team = " ALL Fitzgerald";
+                return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

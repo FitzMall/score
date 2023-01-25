@@ -221,8 +221,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\Index.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\BarGraph.cshtml" />
-    <Content Include="Views\SalesBoardAllMTDs\MultiBar.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\ScoreBoard.cshtml" />
+    <Content Include="Views\SalesBoardAllMTDs\TeamScoreBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

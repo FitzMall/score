@@ -1,0 +1,464 @@
+﻿@model IEnumerable<score.Models.EmployeePerformanceMTD>
+
+
+@{
+    ViewBag.Title = "Team Scoreboard";
+    string Team = ViewBag.Team;
+    string AssociateName = "";
+    string ReportDate = ViewBag.ReportDate;
+    string ReportTitle = "Team Scoreboard";
+    
+    if (Team != "")
+    {
+        ReportTitle += (" " + Team);
+    }
+    int DaysInMonth = ViewBag.DIM;
+    var applicationPath = Request.ApplicationPath;
+    if (applicationPath == "/")
+    {
+        applicationPath = "";
+    }
+    int inc = 0;
+    int inc_DataPoints = 0;
+    int inc_DataPoints2 = 0;
+    int inc_DataPoints3 = 0;
+    int inc_DataPoints4 = 0;
+    int inc_DataPoints5 = 0;
+    int inc_DataPoints6 = 0;
+    int inc_DataPoints7 = 0;
+    int inc_DataPoints8 = 0;
+    int inc_DataPoints9 = 0;
+
+
+
+    string salespersonID = "";
+    string savedAssociateName = "";
+    ViewBag.DataPoints = "";
+    ViewBag.DataPoints2 = "";
+    ViewBag.DataPoints3 = "";
+    ViewBag.DataPoints4 = "";
+    ViewBag.DataPoints5 = "";
+    ViewBag.DataPoints6 = "";
+    ViewBag.DataPoints7 = "";
+    ViewBag.DataPoints8 = "";
+    ViewBag.DataPoints9 = "";
+    ViewBag.legend1 = "";
+    ViewBag.legend2 = "";
+    ViewBag.legend3 = "";
+    ViewBag.legend4 = "";
+    ViewBag.legend5 = "";
+    ViewBag.legend6 = "";
+    ViewBag.legend7 = "";
+    ViewBag.legend8 = "";
+    ViewBag.legend9 = "";
+
+//    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+
+}
+<!DOCTYPE HTML>
+<html>
+
+
+
+@foreach (var item in Model)
+{
+    AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+
+    switch ((string)item.VehicleMake)
+    {
+        case "ACURA":
+            if (inc_DataPoints7 > 0)
+            {
+                ViewBag.DataPoints7 += ",";
+            }
+
+            ViewBag.legend7 = ((string)item.VehicleMake);
+            ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints7 += "}";
+            inc_DataPoints7 += 1;
+            break;
+        case "BUICK":
+            if (inc_DataPoints6 > 0)
+            {
+                ViewBag.DataPoints6 += ",";
+            }
+
+
+            ViewBag.legend6 = ((string)item.VehicleMake);
+            ViewBag.DataPoints6 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints6 += "}";
+            inc_DataPoints6 += 1;
+
+            break;
+        case "CADILLAC":
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+            ViewBag.legend1 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += "}";
+            inc_DataPoints += 1;
+            break;
+        case "CHEVROLET":
+            if (inc_DataPoints7 > 0)
+            {
+                ViewBag.DataPoints7 += ",";
+            }
+
+            ViewBag.legend7 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints7 += "}";
+            inc_DataPoints7 += 1;
+            break;
+        case "CHRYSLER":
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+            ViewBag.legend1 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += "}";
+            inc_DataPoints += 1;
+            break;
+        case "DODGE":
+            if (inc_DataPoints2 > 0)
+            {
+                ViewBag.DataPoints2 += ",";
+            }
+
+            ViewBag.legend2 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints2 += "}";
+            inc_DataPoints2 += 1;
+            break;
+
+        case "GENESIS":
+            if (inc_DataPoints2 > 0)
+            {
+                ViewBag.DataPoints2 += ",";
+            }
+
+            ViewBag.legend2 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints2 += "}";
+            inc_DataPoints2 += 1;
+            break;
+
+        case "GMC":
+            if (inc_DataPoints4 > 0)
+            {
+                ViewBag.DataPoints4 += ",";
+            }
+
+            ViewBag.legend4 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints4 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints4 += "}";
+            inc_DataPoints4 += 1;
+            break;
+        case "HYUNDAI":
+            if (inc_DataPoints7 > 0)
+            {
+                ViewBag.DataPoints7 += ",";
+            }
+
+            ViewBag.legend7 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints7 += "}";
+            inc_DataPoints7 += 1;
+            break;
+        case "INFINITI":
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints4 += ",";
+            }
+
+            ViewBag.legend4 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints4 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints4 += "}";
+            inc_DataPoints4 += 1;
+            break;
+        case "JEEP":
+            if (inc_DataPoints3 > 0)
+            {
+                ViewBag.DataPoints3 += ",";
+            }
+
+            ViewBag.legend3 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints3 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints3 += "}";
+            inc_DataPoints3 += 1;
+            break;
+
+        case "LEXUS":
+            if (inc_DataPoints8 > 0)
+            {
+                ViewBag.DataPoints8 += ",";
+            }
+
+            ViewBag.legend8 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints8 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints8 += "}";
+            inc_DataPoints8 += 1;
+            break;
+        case "MAZDA":
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+            ViewBag.legend1 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints += "}";
+            inc_DataPoints += 1;
+            break;
+        case "MITSUBISHI":
+            if (inc_DataPoints5 > 0)
+            {
+                ViewBag.DataPoints5 += ",";
+            }
+
+            ViewBag.legend5 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints5 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints5 += "}";
+            inc_DataPoints5 += 1;
+            break;
+        case "NISSAN":
+            if (inc_DataPoints2 > 0)
+            {
+                ViewBag.DataPoints2 += ",";
+            }
+
+            ViewBag.legend2 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints2 += "}";
+            inc_DataPoints2 += 1;
+            break;
+        case "RAM":
+            if (inc_DataPoints4 > 0)
+            {
+                ViewBag.DataPoints4 += ",";
+            }
+
+            ViewBag.legend4 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints4 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints4 += "}";
+            inc_DataPoints4 += 1;
+            break;
+        case "SUBARU":
+            if (inc_DataPoints3 > 0)
+            {
+                ViewBag.DataPoints3 += ",";
+            }
+
+            ViewBag.legend3 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints3 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+
+
+            ViewBag.DataPoints3 += "}";
+            inc_DataPoints3 += 1;
+            break;
+        case "TOYOTA":
+            if (inc_DataPoints > 0)
+            {
+                ViewBag.DataPoints += ",";
+            }
+
+            ViewBag.legend1 = ((string)item.VehicleMake);
+
+            ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+
+
+            ViewBag.DataPoints += "}";
+            inc_DataPoints += 1;
+            break;
+        case "VOLKSWAGEN":
+            if (inc_DataPoints2 > 0)
+            {
+                ViewBag.DataPoints2 += ",";
+            }
+            ViewBag.legend2 = ((string)item.VehicleMake);
+            ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+            ViewBag.DataPoints2 += "}";
+            inc_DataPoints2 += 1;
+            break;
+        case "USED":
+            if (inc_DataPoints9 > 0)
+            {
+                ViewBag.DataPoints9 += ",";
+            }
+            ViewBag.legend9 = ((string)item.VehicleMake);
+
+
+            ViewBag.DataPoints9 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+            ViewBag.DataPoints9 += "}";
+            inc_DataPoints9 += 1;
+            break;
+    };
+
+    inc += 1;
+
+
+
+
+    salespersonID = item.sl_SalesAssociate1;
+    savedAssociateName = AssociateName;
+
+    if (savedAssociateName == "")
+    {
+        //save for insertion where absent
+    }
+
+}
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+
+                title: {
+                    text: "@ReportTitle"
+                },
+                axisX: {
+                    interval: 1,
+                    labelFontSize: 18,
+                },
+                axisY: {
+                    labelFontSize: 18,
+                }, axisY2: {
+                    interlacedColor: "rgba(1,77,101,.2)",
+                    gridColor: "rgba(1,77,101,.1)",
+                },
+                data: [{
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend1",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#16697A",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend2",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#489FB5",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints2)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend3",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#82C0CC",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints3)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend4",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#104856",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints4)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend5",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "Aquamarine",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints5)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend6",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "Tan",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints6)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend7",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "Chocolate",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints7)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend8",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "MediumSeaGreen",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints8)]
+                },
+                {
+                    type: "bar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend9",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#FFA62B",
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints9)]
+                }
+
+                ]
+            });
+
+
+                            chart.render();
+
+                        }
+    </script>
+    <meta http-equiv="refresh" content="3600">
+</head>
+<body>
+    <div id="chartContainer" style="height: 850px; max-width: 1700px; left: auto; margin: 0px auto"></div>
+    <script src="../scripts/canvasjs.min.js"></script>
+</body>
+</html>
