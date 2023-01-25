@@ -14,7 +14,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="SalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sl_SalesAssociate1" Type="varchar" MaxLength="200" />
           <Property Name="VehicleMake" Type="nvarchar" MaxLength="50" />
-          <Property Name="MTD" Type="int" />
+          <Property Name="MTD" Type="decimal" Precision="5" Scale="2" />
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LOCATION" Type="char" MaxLength="20" />
@@ -145,7 +145,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sl_SalesAssociate1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="VehicleMake" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MTD" Type="Int32" />
+          <Property Name="MTD" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="FIRSTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LASTNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />

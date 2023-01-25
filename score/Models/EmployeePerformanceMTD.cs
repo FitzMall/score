@@ -17,7 +17,7 @@ namespace score.Models
         public int SalesID { get; set; }
         public string sl_SalesAssociate1 { get; set; }
         public string VehicleMake { get; set; }
-        public Nullable<int> MTD { get; set; }
+        public Nullable<decimal> MTD { get; set; }
         public string FIRSTNAME { get; set; }
         public string LASTNAME { get; set; }
         public string LOCATION { get; set; }
