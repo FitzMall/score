@@ -45,34 +45,7 @@ namespace score.Views
         }
 
 
-            public ActionResult BarGraph(string location = "")
-        {
-            DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
-            int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            
-
-            ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
-            ViewBag.DIM = days;
-            location = location.ToUpper();
-
-            if (location == "")
-            {
-                location = "FTN";
-                    }
-
-
-                if (location != "")
-            {
-                ViewBag.Location = location;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.sl_SalesAssociate1 + a.VehicleMake).ToList());
-            }
-            else
-            {
-                ViewBag.Location = " ALL Fitzgerald";
-                return View(db.EmployeePerformanceMTDs.OrderBy(a => a.sl_SalesAssociate1 + a.VehicleMake).ToList());
-            }
-        }
-
+          
 
         public ActionResult ScoreBoard(string location = "")
         {
@@ -93,7 +66,7 @@ namespace score.Views
             if (location != "")
             {
                 ViewBag.Location = location;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.LOCATION == location).OrderBy(a => a.SalesRank).ToList());
+                return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
             else
             {

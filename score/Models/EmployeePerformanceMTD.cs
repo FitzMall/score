@@ -20,7 +20,6 @@ namespace score.Models
         public Nullable<decimal> MTD { get; set; }
         public string FIRSTNAME { get; set; }
         public string LASTNAME { get; set; }
-        public string LOCATION { get; set; }
         public Nullable<int> SalesRank { get; set; }
         public string SalesTeam { get; set; }
         public string dept_code { get; set; }
