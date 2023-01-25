@@ -101,7 +101,7 @@ namespace score.Views
                 return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
         }
-        public ActionResult TeamScoreBoard(string TeamDeptCode = "")
+        public ActionResult TeamScoreBoard(string Team = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
@@ -109,18 +109,18 @@ namespace score.Views
 
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
-            TeamDeptCode = TeamDeptCode.Trim().ToUpper();
+            Team = Team.Trim().ToUpper();
 
-            if (TeamDeptCode == "")
+            if (Team == "")
             {
-                TeamDeptCode = "AWSL01";
+                Team = "AWSL01";
             }
 
 
-            if (TeamDeptCode != "")
+            if (Team != "")
             {
-                ViewBag.Team = db.EmployeePerformanceMTDs.Where(a => a.dept_code == TeamDeptCode).First().SalesTeam;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.dept_code == TeamDeptCode).OrderBy(a => a.SalesRank).ToList());
+                ViewBag.Team = db.EmployeePerformanceMTDs.Where(a => a.dept_code == Team).First().SalesTeam;
+                return View(db.EmployeePerformanceMTDs.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
             }
             else
             {
