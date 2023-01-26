@@ -63,6 +63,15 @@
 @foreach (var item in Model)
 {
     AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+    if (AssociateName.Length > 25)
+    {
+        AssociateName = item.LASTNAME.ToUpper();
+    }
+
+    if (AssociateName.Length > 25)
+    {
+        AssociateName = item.LASTNAME.ToUpper().Substring(0,25);
+    }
 
     switch ((string)item.VehicleMake)
     {
