@@ -338,8 +338,8 @@
 
     inc += 1;
 
-    ReportTitle = "Team Scoreboard " + item.SalesTeam;
-    ReportTitle += " " + ViewBag.MonthDisplay;
+    ReportTitle = "" + item.SalesTeam;
+    ReportTitle += " " + ViewBag.MonthDisplay + " " + ViewBag.YrShow;
 
     salespersonID = item.sl_SalesAssociate1;
     savedAssociateName = AssociateName;

@@ -89,12 +89,12 @@ namespace score.Views
 
             if (Team == "")
             {
-                Team = "AWSL01";
+                Team = "GASL03";
             }
 
             DateTime ReportDate = (DateTime)dt;
             ViewBag.MonthDisplay =  ReportDate.ToString("MMMM");
-
+            ViewBag.YrShow = ReportDate.ToString("yyyy");
             return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
 
         }
