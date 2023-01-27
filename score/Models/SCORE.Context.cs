@@ -39,5 +39,23 @@ namespace score.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceMTD_AllLocations");
         }
+    
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceMTD_ByDate(Nullable<System.DateTime> parDate)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceMTD_ByDate", parDateParameter);
+        }
+    
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceMTD_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceMTD_ByDate", mergeOption, parDateParameter);
+        }
     }
 }

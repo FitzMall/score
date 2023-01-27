@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Team Scoreboard";
-    string Team = ViewBag.Team;
+    string Team = "";
     string AssociateName = "";
     string ReportDate = ViewBag.ReportDate;
     string ReportTitle = "Team Scoreboard";
@@ -338,8 +338,8 @@
 
     inc += 1;
 
-
-
+    ReportTitle = "Team Scoreboard " + item.SalesTeam;
+    ReportTitle += " " + ViewBag.MonthDisplay;
 
     salespersonID = item.sl_SalesAssociate1;
     savedAssociateName = AssociateName;

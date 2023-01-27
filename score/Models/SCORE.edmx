@@ -68,6 +68,9 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="MTD" Type="int" />
         </EntityType>
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_EmployeePerformanceMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parDate" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeePerformanceMTD" EntityType="Self.EmployeePerformanceMTD" store:Type="Tables" store:Schema="dbo">
@@ -93,6 +96,9 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <FunctionImport Name="sp_EmployeePerformanceMTD_AllLocations" />
           <EntitySet Name="SalesBoardAllMTDs" EntityType="SalesCommissionModel.SalesBoardAllMTD" />
           <EntitySet Name="EmployeePerformanceMTDs" EntityType="SalesCommissionModel.EmployeePerformanceMTD" />
+          <FunctionImport Name="sp_EmployeePerformanceMTD_ByDate" EntitySet="EmployeePerformanceMTDs" ReturnType="Collection(SalesCommissionModel.EmployeePerformanceMTD)">
+            <Parameter Name="parDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -219,6 +225,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_ByDate" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

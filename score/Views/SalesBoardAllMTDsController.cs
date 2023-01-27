@@ -45,8 +45,6 @@ namespace score.Views
         }
 
 
-          
-
         public ActionResult ScoreBoard(string location = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
@@ -62,7 +60,6 @@ namespace score.Views
                 location = "FTN";
             }
 
-
             if (location != "")
             {
                 ViewBag.Location = location;
@@ -74,32 +71,32 @@ namespace score.Views
                 return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
         }
-        public ActionResult TeamScoreBoard(string Team = "")
+        public ActionResult TeamScoreBoard(DateTime? dt = null, string Team = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-
             ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.DIM = days;
             Team = Team.Trim().ToUpper();
+            if (dt == null)
+            {
+                dt = DateTime.Today;
+            }
+            //sp_EmployeePerformanceMTD_ByDate
+            var context = new SalesCommissionEntities();
+            var MTD = context.sp_EmployeePerformanceMTD_ByDate(dt);
 
             if (Team == "")
             {
                 Team = "AWSL01";
             }
 
+            DateTime ReportDate = (DateTime)dt;
+            ViewBag.MonthDisplay =  ReportDate.ToString("MMMM");
 
-            if (Team != "")
-            {
-                ViewBag.Team = db.EmployeePerformanceMTDs.Where(a => a.dept_code == Team).First().SalesTeam;
-                return View(db.EmployeePerformanceMTDs.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
-            }
-            else
-            {
-                ViewBag.Team = " ALL Fitzgerald";
-                return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
-            }
+            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
+
         }
 
         protected override void Dispose(bool disposing)
