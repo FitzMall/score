@@ -75,15 +75,23 @@ namespace score.Views
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            DateTime dReportDate;
 
-            ViewBag.ReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
+            string sReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
+            ViewBag.ReportDate = DateTime.Parse(sReportDate);
             ViewBag.DIM = days;
             Team = Team.Trim().ToUpper();
             if (dt == null)
             {
                 dt = DateTime.Today;
             }
-            //sp_EmployeePerformanceMTD_ByDate
+
+            dReportDate = (DateTime)dt;
+
+            sReportDate = dtfi.GetMonthName(dReportDate.Month) + " " + (dReportDate.Year.ToString());
+            ViewBag.ReportDate = (dReportDate);
+
+            //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
             var context = new SalesCommissionEntities();
             var MTD = context.sp_EmployeePerformanceMTD_ByDate(dt);
 
@@ -93,12 +101,13 @@ namespace score.Views
             }
 
             DateTime ReportDate = (DateTime)dt;
-            ViewBag.MonthDisplay =  ReportDate.ToString("MMMM");
+            ViewBag.MonthDisplay = ReportDate.ToString("MMMM");
             ViewBag.YrShow = ReportDate.ToString("yyyy");
-            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
+            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList();
 
+            //            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
+            return View(SBoard);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -107,5 +116,11 @@ namespace score.Views
             }
             base.Dispose(disposing);
         }
+
+        protected void MonthClick(string Month)
+        {
+         
+        }
+
     }
 }

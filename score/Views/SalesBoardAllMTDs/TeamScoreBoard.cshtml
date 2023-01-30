@@ -5,9 +5,9 @@
     ViewBag.Title = "Team Scoreboard";
     string Team = "";
     string AssociateName = "";
-    string ReportDate = ViewBag.ReportDate;
+    DateTime ReportDate = ViewBag.ReportDate;
     string ReportTitle = "Team Scoreboard";
-    
+
     if (Team != "")
     {
         ReportTitle += (" " + Team);
@@ -52,13 +52,16 @@
     ViewBag.legend8 = "";
     ViewBag.legend9 = "";
 
-//    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+    //    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+
 
 }
+
+
 <!DOCTYPE HTML>
 <html>
 
-
+@Html.ActionLink("<Previous Month", "TeamScoreBoard", new { dt = ReportDate.AddMonths(-1), Team = Team })
 
 @foreach (var item in Model)
 {
@@ -70,7 +73,7 @@
 
     if (AssociateName.Length > 25)
     {
-        AssociateName = item.LASTNAME.ToUpper().Substring(0,25);
+        AssociateName = item.LASTNAME.ToUpper().Substring(0, 25);
     }
 
     switch ((string)item.VehicleMake)
@@ -470,5 +473,6 @@
 <body>
     <div id="chartContainer" style="height: 850px; max-width: 1700px; left: auto; margin: 0px auto"></div>
     <script src="../scripts/canvasjs.min.js"></script>
+
 </body>
 </html>
