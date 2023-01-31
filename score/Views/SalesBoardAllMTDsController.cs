@@ -117,10 +117,5 @@ namespace score.Views
             base.Dispose(disposing);
         }
 
-        protected void MonthClick(string Month)
-        {
-         
-        }
-
     }
 }

@@ -8,6 +8,7 @@
     DateTime ReportDate = ViewBag.ReportDate;
     string ReportTitle = "Team Scoreboard";
     string DeptCode = "";
+    string PickedMonthValue = "";
 
     if (Team != "")
     {
@@ -62,6 +63,7 @@
 <!DOCTYPE HTML>
 <html>
 
+<input id="bday-month" type="month" name="bday-month" oninput="monthpick()" />
 @foreach (var item in Model)
 {
     AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
@@ -365,9 +367,21 @@
 
     <meta charset="UTF-8">
     <script>
+
+        function monthpick() {
+            const monthControl = document.querySelector('input[type="month"]');
+            var sDateWork = (monthControl.value);
+            sDateWork = sDateWork + "-01";
+            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+            location.href = strurl;
+
+           // alert(strurl);
+        }
+
         window.onload = function () {
 
-            var chart = new CanvasJS.Chart("chartContainer", {
+            const monthControl = document.querySelector('input[type="month"]');
+               var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 
                 title: {
