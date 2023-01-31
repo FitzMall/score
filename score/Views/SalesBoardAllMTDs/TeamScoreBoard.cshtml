@@ -3,18 +3,17 @@
 
 @{
     ViewBag.Title = "Team Scoreboard";
-    string Team = "";
     string AssociateName = "";
     DateTime ReportDate = ViewBag.ReportDate;
     string ReportTitle = "Team Scoreboard";
-    string DeptCode = "";
-    string PickedMonthValue = "";
+    string DeptCode = ViewBag.DeptCode;
+    string Team = DeptCode;
+    string sDate = ReportDate.ToString("yyyy-MM");
 
     if (Team != "")
     {
         ReportTitle += (" " + Team);
     }
-    int DaysInMonth = ViewBag.DIM;
     var applicationPath = Request.ApplicationPath;
     if (applicationPath == "/")
     {
@@ -342,7 +341,7 @@
 
     inc += 1;
 
-    DeptCode = "" + item.dept_code;
+   // DeptCode = "" + item.dept_code;
     Team = "" + item.SalesTeam;
     ReportTitle = "" + Team;
     ReportTitle += " " + ViewBag.MonthDisplay + " " + ViewBag.YrShow;
@@ -381,6 +380,7 @@
         window.onload = function () {
 
             const monthControl = document.querySelector('input[type="month"]');
+            monthControl.value = "@sDate";
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 

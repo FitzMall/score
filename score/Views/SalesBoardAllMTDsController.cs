@@ -79,7 +79,7 @@ namespace score.Views
 
             string sReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.ReportDate = DateTime.Parse(sReportDate);
-            ViewBag.DIM = days;
+            ViewBag.DeptCode = Team; 
             Team = Team.Trim().ToUpper();
             if (dt == null)
             {
@@ -97,7 +97,7 @@ namespace score.Views
 
             if (Team == "")
             {
-                Team = "GASL03";
+             //   Team = "GASL03";
             }
 
             DateTime ReportDate = (DateTime)dt;
