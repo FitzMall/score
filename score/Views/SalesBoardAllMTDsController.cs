@@ -97,7 +97,7 @@ namespace score.Views
 
             if (Team == "")
             {
-             //   Team = "GASL03";
+                Team = "GASL03";
             }
 
             DateTime ReportDate = (DateTime)dt;

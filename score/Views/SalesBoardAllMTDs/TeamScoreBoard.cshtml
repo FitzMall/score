@@ -341,10 +341,7 @@
 
     inc += 1;
 
-   // DeptCode = "" + item.dept_code;
-    Team = "" + item.SalesTeam;
-    ReportTitle = "" + Team;
-    ReportTitle += " " + ViewBag.MonthDisplay + " " + ViewBag.YrShow;
+
 
     salespersonID = item.sl_SalesAssociate1;
     savedAssociateName = AssociateName;
@@ -356,7 +353,10 @@
 
     if (inc == 1)
     {
-        @Html.ActionLink("<Previous Month", "TeamScoreBoard", new { dt = ReportDate.AddMonths(-1), Team = DeptCode })
+        // DeptCode = "" + item.dept_code;
+        Team = "" + item.SalesTeam;
+        ReportTitle = "" + Team;
+        ReportTitle += " " + ViewBag.MonthDisplay + " " + ViewBag.YrShow;      
     }
 
 }
