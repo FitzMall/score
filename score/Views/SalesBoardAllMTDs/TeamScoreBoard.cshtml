@@ -66,7 +66,8 @@
 
     @foreach (var item in Model)
     {
-        AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+        //        AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+        AssociateName = item.sl_SalesAssociate1.ToUpper() + " " + item.LASTNAME.ToUpper();
         if (AssociateName.Length > 25)
         {
             AssociateName = item.LASTNAME.ToUpper();
@@ -88,7 +89,7 @@
                 ViewBag.legend7 = ((string)item.VehicleMake);
                 ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints7 += "}";
-                inc_DataPoints7 += 1;
+                inc_DataPoints7 += (inc + 1);
                 break;
             case "BUICK":
                 if (inc_DataPoints6 > 0)
@@ -101,7 +102,7 @@
                 ViewBag.DataPoints6 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints6 += "}";
-                inc_DataPoints6 += 1;
+                inc_DataPoints6 += (inc + 1);
 
                 break;
             case "CADILLAC":
@@ -115,7 +116,7 @@
                 ViewBag.DataPoints6 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints6 += "}";
-                inc_DataPoints6 += 1;
+                inc_DataPoints6 += (inc + 1);
                 break;
             case "CHEVROLET":
                 if (inc_DataPoints7 > 0)
@@ -128,7 +129,7 @@
                 ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints7 += "}";
-                inc_DataPoints7 += 1;
+                inc_DataPoints7 += (inc + 1);
                 break;
             case "CHRYSLER":
                 if (inc_DataPoints8 > 0)
@@ -140,7 +141,7 @@
                 ViewBag.DataPoints8 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints8 += "}";
-                inc_DataPoints8 += 1;
+                inc_DataPoints8 += (inc + 1);
                 break;
             case "DODGE":
                 if (inc_DataPoints5 > 0)
@@ -153,7 +154,7 @@
                 ViewBag.DataPoints5 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints5 += "}";
-                inc_DataPoints5 += 1;
+                inc_DataPoints5 += (inc + 1);
                 break;
 
             case "GENESIS":
@@ -167,7 +168,7 @@
                 ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints2 += "}";
-                inc_DataPoints2 += 1;
+                inc_DataPoints2 += (inc + 1);
                 break;
 
             case "GMC":
@@ -181,7 +182,7 @@
                 ViewBag.DataPoints4 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints4 += "}";
-                inc_DataPoints4 += 1;
+                inc_DataPoints4 += (inc + 1);
                 break;
             case "HYUNDAI":
                 if (inc_DataPoints7 > 0)
@@ -194,7 +195,7 @@
                 ViewBag.DataPoints7 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints7 += "}";
-                inc_DataPoints7 += 1;
+                inc_DataPoints7 += (inc + 1);
                 break;
             case "INFINITI":
                 if (inc_DataPoints > 0)
@@ -207,7 +208,7 @@
                 ViewBag.DataPoints4 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints4 += "}";
-                inc_DataPoints4 += 1;
+                inc_DataPoints4 += (inc + 1);
                 break;
             case "JEEP":
                 if (inc_DataPoints3 > 0)
@@ -220,7 +221,7 @@
                 ViewBag.DataPoints3 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints3 += "}";
-                inc_DataPoints3 += 1;
+                inc_DataPoints3 += (inc + 1);
                 break;
 
             case "LEXUS":
@@ -234,7 +235,7 @@
                 ViewBag.DataPoints8 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints8 += "}";
-                inc_DataPoints8 += 1;
+                inc_DataPoints8 += (inc + 1);
                 break;
             case "MAZDA":
                 if (inc_DataPoints > 0)
@@ -247,7 +248,7 @@
                 ViewBag.DataPoints += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints += "}";
-                inc_DataPoints += 1;
+                inc_DataPoints += (inc + 1);
                 break;
             case "MITSUBISHI":
                 if (inc_DataPoints5 > 0)
@@ -259,7 +260,7 @@
 
                 ViewBag.DataPoints5 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints5 += "}";
-                inc_DataPoints5 += 1;
+                inc_DataPoints5 += (inc + 1);
                 break;
             case "NISSAN":
                 if (inc_DataPoints2 > 0)
@@ -271,7 +272,7 @@
 
                 ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints2 += "}";
-                inc_DataPoints2 += 1;
+                inc_DataPoints2 += (inc + 1);
                 break;
             case "RAM":
                 if (inc_DataPoints4 > 0)
@@ -283,7 +284,7 @@
 
                 ViewBag.DataPoints4 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints4 += "}";
-                inc_DataPoints4 += 1;
+                inc_DataPoints4 += (inc + 1);
                 break;
             case "SUBARU":
                 if (inc_DataPoints3 > 0)
@@ -298,7 +299,7 @@
 
 
                 ViewBag.DataPoints3 += "}";
-                inc_DataPoints3 += 1;
+                inc_DataPoints3 += (inc + 1);
                 break;
             case "TOYOTA":
                 if (inc_DataPoints > 0)
@@ -313,7 +314,7 @@
 
 
                 ViewBag.DataPoints += "}";
-                inc_DataPoints += 1;
+                inc_DataPoints += (inc + 1);
                 break;
             case "VOLKSWAGEN":
                 if (inc_DataPoints2 > 0)
@@ -323,7 +324,7 @@
                 ViewBag.legend2 = ((string)item.VehicleMake);
                 ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints2 += "}";
-                inc_DataPoints2 += 1;
+                inc_DataPoints2 += (inc + 1);
                 break;
             case "USED":
                 if (inc_DataPoints9 > 0)
@@ -336,16 +337,16 @@
                 ViewBag.DataPoints9 += "{  y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
                 ViewBag.DataPoints9 += "}";
-                inc_DataPoints9 += 1;
+                inc_DataPoints9 += (inc + 1);
                 break;
         };
 
-        inc += 1;
+        inc += (1);
 
 
 
         salespersonID = item.sl_SalesAssociate1;
-        savedAssociateName = AssociateName;
+        savedAssociateName = AssociateName + salespersonID;
 
         if (savedAssociateName == "")
         {
@@ -401,7 +402,7 @@
                     gridColor: "rgba(1,77,101,.1)",
                 },
                 data: [{
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend1",
                     xValueFormatString: "string",
@@ -410,7 +411,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend2",
                     xValueFormatString: "string",
@@ -419,7 +420,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints2)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend3",
                     xValueFormatString: "string",
@@ -428,7 +429,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints3)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend4",
                     xValueFormatString: "string",
@@ -437,7 +438,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints4)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend5",
                     xValueFormatString: "string",
@@ -446,7 +447,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints5)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend6",
                     xValueFormatString: "string",
@@ -455,7 +456,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints6)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend7",
                     xValueFormatString: "string",
@@ -464,7 +465,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints7)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend8",
                     xValueFormatString: "string",
@@ -473,7 +474,7 @@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints8)]
                 },
                 {
-                    type: "bar",
+                    type: "stackedBar",
                     showInLegend: "true",
                     name: "@ViewBag.legend9",
                     xValueFormatString: "string",

@@ -103,7 +103,7 @@ namespace score.Views
             DateTime ReportDate = dReportDate;
             ViewBag.MonthDisplay = ReportDate.ToString("MMMM");
             ViewBag.YrShow = ReportDate.ToString("yyyy");
-            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank + a.SalesID).ToList();
+            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.sl_SalesAssociate1).ToList();
 
             //            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
             return View(SBoard);
