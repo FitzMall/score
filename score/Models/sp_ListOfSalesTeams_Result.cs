@@ -10,18 +10,10 @@
 namespace score.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class EmployeePerformanceMTD
+    public partial class sp_ListOfSalesTeams_Result
     {
-        public int SalesID { get; set; }
-        public string sl_SalesAssociate1 { get; set; }
-        public string VehicleMake { get; set; }
-        public Nullable<decimal> MTD { get; set; }
-        public string FIRSTNAME { get; set; }
-        public string LASTNAME { get; set; }
-        public Nullable<int> SalesRank { get; set; }
-        public string SalesTeam { get; set; }
         public string dept_code { get; set; }
+        public string dept_desc { get; set; }
     }
 }

@@ -57,5 +57,10 @@ namespace score.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceMTD_ByDate", mergeOption, parDateParameter);
         }
+    
+        public virtual ObjectResult<sp_ListOfSalesTeams_Result1> sp_ListOfSalesTeams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListOfSalesTeams_Result1>("sp_ListOfSalesTeams");
+        }
     }
 }

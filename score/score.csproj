@@ -161,6 +161,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SCORE.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_ListOfSalesTeams_Result.cs">
+      <DependentUpon>SCORE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ListOfSalesTeams_Result1.cs">
+      <DependentUpon>SCORE.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\SalesBoardAllMTDsController.cs" />
   </ItemGroup>

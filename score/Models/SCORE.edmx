@@ -71,6 +71,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
         <Function Name="sp_EmployeePerformanceMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parDate" Type="date" Mode="In" />
         </Function>
+        <Function Name="sp_ListOfSalesTeams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeePerformanceMTD" EntityType="Self.EmployeePerformanceMTD" store:Type="Tables" store:Schema="dbo">
@@ -99,6 +100,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <FunctionImport Name="sp_EmployeePerformanceMTD_ByDate" EntitySet="EmployeePerformanceMTDs" ReturnType="Collection(SalesCommissionModel.EmployeePerformanceMTD)">
           <Parameter Name="parDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="sp_ListOfSalesTeams" ReturnType="Collection(SalesCommissionModel.sp_ListOfSalesTeams_Result1)" />
           </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -160,6 +162,14 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="SalesTeam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dept_code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="sp_ListOfSalesTeams_Result">
+          <Property Type="String" Name="dept_code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="dept_desc" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ListOfSalesTeams_Result1">
+          <Property Type="String" Name="dept_code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="dept_desc" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -226,6 +236,14 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_ByDate" />
+          <FunctionImportMapping FunctionImportName="sp_ListOfSalesTeams" FunctionName="SalesCommissionModel.Store.sp_ListOfSalesTeams">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesCommissionModel.sp_ListOfSalesTeams_Result1">
+                <ScalarProperty Name="dept_code" ColumnName="dept_code" />
+                <ScalarProperty Name="dept_desc" ColumnName="dept_desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
