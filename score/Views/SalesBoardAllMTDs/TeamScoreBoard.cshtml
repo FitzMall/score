@@ -9,7 +9,7 @@
     string DeptCode = ViewBag.DeptCode;
     string Team = DeptCode;
     string sDate = ReportDate.ToString("yyyy-MM");
-
+   
     if (Team != "")
     {
         ReportTitle += (" " + Team);
@@ -383,7 +383,9 @@
 
             const monthControl = document.querySelector('input[type="month"]');
             monthControl.value = "@sDate";
-            monthControl.max = "@sDate";
+            let today = new Date().toISOString().slice(0, 10)
+            monthControl.max = today.substring(0, 7);
+
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 
