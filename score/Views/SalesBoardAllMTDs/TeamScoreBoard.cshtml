@@ -67,7 +67,7 @@
     @foreach (var item in Model)
     {
         //        AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
-        AssociateName = item.sl_SalesAssociate1.ToUpper() + " " + item.LASTNAME.ToUpper();
+        AssociateName = item.SalesRank.ToString() + " " + item.LASTNAME.ToUpper();
         if (AssociateName.Length > 25)
         {
             AssociateName = item.LASTNAME.ToUpper();

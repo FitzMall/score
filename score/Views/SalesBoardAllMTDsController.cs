@@ -79,8 +79,6 @@ namespace score.Views
 
             string sReportDate = dtfi.GetMonthName(DateTime.Now.Month) + " " + (DateTime.Now.Year.ToString());
             ViewBag.ReportDate = DateTime.Parse(sReportDate);
-            ViewBag.DeptCode = Team; 
-            Team = Team.Trim().ToUpper();
             if (dt == null)
             {
                 dt = DateTime.Today.AddDays(-1);
@@ -99,11 +97,13 @@ namespace score.Views
             {
                 Team = "GASL03";
             }
+            ViewBag.DeptCode = Team;
+            Team = Team.Trim().ToUpper();
 
             DateTime ReportDate = dReportDate;
             ViewBag.MonthDisplay = ReportDate.ToString("MMMM");
             ViewBag.YrShow = ReportDate.ToString("yyyy");
-            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.sl_SalesAssociate1).ToList();
+            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
 
             //            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
             return View(SBoard);
