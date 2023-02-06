@@ -73,6 +73,11 @@
 
         if (AssociateName.Length > 13)
         {
+            AssociateName = item.FIRSTNAME.ToUpper().Substring(0,1) + "." + item.LASTNAME.ToUpper();
+        }
+
+        if (AssociateName.Length > 13)
+        {
             AssociateName = item.LASTNAME.ToUpper();
         }
 
@@ -403,7 +408,7 @@
             monthControl.max = today.substring(0, 7);
             const teamControl = document.querySelector('select');
             teamControl.value = "@DeptCode";
-
+            
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 
