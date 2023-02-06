@@ -1,83 +1,85 @@
 ﻿@model IEnumerable<score.Models.EmployeePerformanceMTD>
 
 
-@{
-    ViewBag.Title = "Team Scoreboard";
-    string AssociateName = "";
-    DateTime ReportDate = ViewBag.ReportDate;
-    string ReportTitle = "Team Scoreboard";
-    string DeptCode = ViewBag.DeptCode;
-    string Team = DeptCode;
-    string sDate = ReportDate.ToString("yyyy-MM");
-   
-    if (Team != "")
-    {
-        ReportTitle += (" " + Team);
+    @{
+        ViewBag.Title = "Team Scoreboard";
+        string AssociateName = "";
+        DateTime ReportDate = ViewBag.ReportDate;
+
+        string ReportTitle = "Team Scoreboard";
+        string DeptCode = ViewBag.DeptCode;
+        string Team = DeptCode;
+        string sDate = ReportDate.ToString("yyyy-MM");
+
+        if (Team != "")
+        {
+            ReportTitle += (" " + Team);
+        }
+        var applicationPath = Request.ApplicationPath;
+        if (applicationPath == "/")
+        {
+            applicationPath = "";
+        }
+        int inc = 0;
+        int inc_DataPoints = 0;
+        int inc_DataPoints2 = 0;
+        int inc_DataPoints3 = 0;
+        int inc_DataPoints4 = 0;
+        int inc_DataPoints5 = 0;
+        int inc_DataPoints6 = 0;
+        int inc_DataPoints7 = 0;
+        int inc_DataPoints8 = 0;
+        int inc_DataPoints9 = 0;
+
+
+
+        string salespersonID = "";
+        string savedAssociateName = "";
+        ViewBag.DataPoints = "";
+        ViewBag.DataPoints2 = "";
+        ViewBag.DataPoints3 = "";
+        ViewBag.DataPoints4 = "";
+        ViewBag.DataPoints5 = "";
+        ViewBag.DataPoints6 = "";
+        ViewBag.DataPoints7 = "";
+        ViewBag.DataPoints8 = "";
+        ViewBag.DataPoints9 = "";
+        ViewBag.legend1 = "";
+        ViewBag.legend2 = "";
+        ViewBag.legend3 = "";
+        ViewBag.legend4 = "";
+        ViewBag.legend5 = "";
+        ViewBag.legend6 = "";
+        ViewBag.legend7 = "";
+        ViewBag.legend8 = "";
+        ViewBag.legend9 = "";
+
+        //    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+
+
     }
-    var applicationPath = Request.ApplicationPath;
-    if (applicationPath == "/")
-    {
-        applicationPath = "";
-    }
-    int inc = 0;
-    int inc_DataPoints = 0;
-    int inc_DataPoints2 = 0;
-    int inc_DataPoints3 = 0;
-    int inc_DataPoints4 = 0;
-    int inc_DataPoints5 = 0;
-    int inc_DataPoints6 = 0;
-    int inc_DataPoints7 = 0;
-    int inc_DataPoints8 = 0;
-    int inc_DataPoints9 = 0;
 
 
+    <!DOCTYPE HTML>
+    <html>
 
-    string salespersonID = "";
-    string savedAssociateName = "";
-    ViewBag.DataPoints = "";
-    ViewBag.DataPoints2 = "";
-    ViewBag.DataPoints3 = "";
-    ViewBag.DataPoints4 = "";
-    ViewBag.DataPoints5 = "";
-    ViewBag.DataPoints6 = "";
-    ViewBag.DataPoints7 = "";
-    ViewBag.DataPoints8 = "";
-    ViewBag.DataPoints9 = "";
-    ViewBag.legend1 = "";
-    ViewBag.legend2 = "";
-    ViewBag.legend3 = "";
-    ViewBag.legend4 = "";
-    ViewBag.legend5 = "";
-    ViewBag.legend6 = "";
-    ViewBag.legend7 = "";
-    ViewBag.legend8 = "";
-    ViewBag.legend9 = "";
-
-    //    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+    <input id="bday-month" type="month" name="bday-month" min="2017-12" max="2030-12" oninput="monthpick()" />
 
 
-}
-
-
-<!DOCTYPE HTML>
-<html>
-
-<input id="bday-month" type="month" name="bday-month" min ="2017-12" max = "2030-12" oninput="monthpick()" />
 
     @foreach (var item in Model)
     {
         AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
-        //         AssociateName = item.SalesRank.ToString() + " " + item.LASTNAME.ToUpper();
-        if (AssociateName.Length > 25)
+
+        if (AssociateName.Length > 13)
         {
             AssociateName = item.LASTNAME.ToUpper();
         }
 
-        if (AssociateName.Length > 25)
+        if (AssociateName.Length > 13)
         {
-            AssociateName = item.LASTNAME.ToUpper().Substring(0, 25);
+            AssociateName = item.FIRSTNAME.ToUpper();
         }
-
         switch ((string)item.VehicleMake)
         {
             case "ACURA":
@@ -363,17 +365,31 @@
 
     }
 
+    <label for="cars">Choose a Team:</label>
+    <select id="cars" name="cars" onchange="teampick()">
+        @foreach (var item in ViewBag.TeamsList)
+        {
+            <option value=@item.dept_code>@item.dept_desc</option>
+        }
+    </select>
+    <head>
 
-<head>
-
-    <meta charset="UTF-8">
-    <script>
+        <meta charset="UTF-8">
+        <script>
 
         function monthpick() {
             const monthControl = document.querySelector('input[type="month"]');
             var sDateWork = (monthControl.value);
             sDateWork = sDateWork + "-01";
             var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+            location.href = strurl;
+
+            }
+
+        function teampick() {
+            const teamControl = document.querySelector('select');
+            var sWork = (teamControl.value);
+            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
             location.href = strurl;
 
            // alert(strurl);
@@ -385,6 +401,8 @@
             monthControl.value = "@sDate";
             let today = new Date().toISOString().slice(0, 10)
             monthControl.max = today.substring(0, 7);
+            const teamControl = document.querySelector('select');
+            teamControl.value = "@DeptCode";
 
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
@@ -492,12 +510,12 @@
                             chart.render();
 
                         }
-    </script>
-    <meta http-equiv="refresh" content="900">
-</head>
-<body>
-    <div id="chartContainer" style="height: 850px; max-width: 1700px; left: auto; margin: 0px auto"></div>
-    <script src="../scripts/canvasjs.min.js"></script>
+        </script>
+        <meta http-equiv="refresh" content="900">
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 850px; max-width: 1900px; left: auto; margin: 0px auto"></div>
+        <script src="../scripts/canvasjs.min.js"></script>
 
-</body>
-</html>
+    </body>
+    </html>

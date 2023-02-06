@@ -92,6 +92,8 @@ namespace score.Views
             //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
             var context = new SalesCommissionEntities();
             var MTD = context.sp_EmployeePerformanceMTD_ByDate(dt);
+            var teamslist = context.sp_ListOfSalesTeams();
+            ViewBag.TeamsList = teamslist;
 
             if (Team == "")
             {
@@ -99,6 +101,8 @@ namespace score.Views
             }
             ViewBag.DeptCode = Team;
             Team = Team.Trim().ToUpper();
+
+            //sp_ListOfSalesTeams_Result
 
             DateTime ReportDate = dReportDate;
             ViewBag.MonthDisplay = ReportDate.ToString("MMMM");
