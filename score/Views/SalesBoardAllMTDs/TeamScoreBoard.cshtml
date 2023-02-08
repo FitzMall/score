@@ -85,6 +85,9 @@
         {
             AssociateName = item.FIRSTNAME.ToUpper();
         }
+
+        //AssociateName = item.SalesRank.ToString() + " " + item.LASTNAME.ToUpper();  // temporary vvvvv
+
         switch ((string)item.VehicleMake)
         {
             case "ACURA":
@@ -377,6 +380,7 @@
             <option value=@item.dept_code>@item.dept_desc</option>
         }
     </select>
+@DeptCode
     <head>
 
         <meta charset="UTF-8">
