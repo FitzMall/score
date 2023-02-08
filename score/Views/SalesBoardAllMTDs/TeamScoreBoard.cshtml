@@ -170,14 +170,14 @@
             case "GENESIS":
                 if (inc_DataPoints > 0)
                 {
-                    ViewBag.DataPoints1 += ",";
+                    ViewBag.DataPoints += ",";
                 }
 
                 ViewBag.legend1 = ((string)item.VehicleMake);
 
-                ViewBag.DataPoints1 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+                ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
 
-                ViewBag.DataPoints1 += "}";
+                ViewBag.DataPoints += "}";
                 inc_DataPoints += (inc + 1);
                 break;
 
