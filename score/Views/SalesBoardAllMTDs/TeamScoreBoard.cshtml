@@ -86,7 +86,7 @@
             AssociateName = item.FIRSTNAME.ToUpper();
         }
 
-        //AssociateName = item.SalesRank.ToString() + " " + item.LASTNAME.ToUpper();  // temporary vvvvv
+        AssociateName = item.SalesRank.ToString() + " " + item.LASTNAME.ToUpper();  // temporary vvvvv
 
         switch ((string)item.VehicleMake)
         {
@@ -382,8 +382,8 @@
     </select>
 @DeptCode
     <head>
+        <link rel="stylesheet" href="https://use.typekit.net/kkc6mij.css">
 
-        <meta charset="UTF-8">
         <script>
 
         function monthpick() {
@@ -412,12 +412,14 @@
             monthControl.max = today.substring(0, 7);
             const teamControl = document.querySelector('select');
             teamControl.value = "@DeptCode";
-            
+
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 
                 title: {
-                    text: "@ReportTitle"
+                    text: "@ReportTitle",
+                    fontFamily: "sofia-pro, sans-serif",
+                    fontWeight: "normal",
                 },
                 axisX: {
                     interval: 1,
