@@ -398,9 +398,6 @@
     @DeptCode
 
 
-    <input type="checkbox" id="newonly" name="newonly" onclick="newcarsonly()">
-    <label for="newonly">New Cars Only?</label>
-
     <input type="radio" id="radiocarstatus" name="radiocarstatus" value="new" onclick="new_radiobutton()">
     <label for="radiocarstatus">New</label>
     <input type="radio" id="radiocarstatus" name="radiocarstatus" value="used" onclick="used_radiobutton()">
@@ -427,34 +424,21 @@
             var sWork = (teamControl.value);
             var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
             location.href = strurl;
-
-           // alert(strurl);
-            }
-
-        function newcarsonly() {
-             var newcarsonlyvalue = document.getElementById('newonly').checked;
-          //  alert(newcarsonlyvalue);
-            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&nw=" + newcarsonlyvalue;
-            alert(strurl);
-            location.href = strurl;
-
+               // alert(strurl);
             }
 
             function new_radiobutton() {
                 var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=n";
-                alert(strurl);
                 location.href = strurl;
             }
 
             function used_radiobutton() {
                 var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=u";
-                alert(strurl);
                 location.href = strurl;
             }
 
             function all_radiobutton() {
                 var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode";
-                alert(strurl);
                 location.href = strurl;
             }
 
