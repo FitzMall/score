@@ -71,7 +71,7 @@ namespace score.Views
                 return View(db.EmployeePerformanceMTDs.OrderByDescending(a => a.sl_SalesAssociate1).ToList());
             }
         }
-        public ActionResult TeamScoreBoard(DateTime? dt = null, string Team = "")
+        public ActionResult TeamScoreBoard(DateTime? dt = null, string Team = "", string st = "")
         {
             DateTimeFormatInfo dtfi = CultureInfo.GetCultureInfo("en-US").DateTimeFormat;
             int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
@@ -107,10 +107,22 @@ namespace score.Views
             DateTime ReportDate = dReportDate;
             ViewBag.MonthDisplay = ReportDate.ToString("MMMM");
             ViewBag.YrShow = ReportDate.ToString("yyyy");
-            var SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+            ViewBag.st = st;
+            System.Collections.Generic.List<score.Models.EmployeePerformanceMTD> SBoard;
+             switch (st)
+            {
+                case "n":
+                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED").OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+                    return View(SBoard);
+                case "u":
+                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED").OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+                    return View(SBoard);
+                default:
+                    SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+                    return View(SBoard);
+            }
 
-            //            return View(MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesID).ToList());
-            return View(SBoard);
+      return View();
         }
         protected override void Dispose(bool disposing)
         {

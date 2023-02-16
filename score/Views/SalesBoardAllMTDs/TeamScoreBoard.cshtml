@@ -10,6 +10,8 @@
 
         string ReportTitle = "Team Scoreboard";
         string DeptCode = ViewBag.DeptCode;
+        string CarStatus = ViewBag.st; 
+
         string Team = DeptCode;
         string sDate = ReportDate.ToString("yyyy-MM");
         int FontSize_Name = 26;
@@ -76,7 +78,7 @@
 
         if (AssociateName.Length > 13)
         {
-            AssociateName = item.FIRSTNAME.ToUpper().Substring(0,1) + "." + item.LASTNAME.ToUpper();
+            AssociateName = item.FIRSTNAME.ToUpper().Substring(0, 1) + "." + item.LASTNAME.ToUpper();
         }
 
         if (AssociateName.Length > 13)
@@ -393,7 +395,19 @@
             <option value=@item.dept_code>@item.dept_desc</option>
         }
     </select>
-@DeptCode
+    @DeptCode
+
+
+    <input type="checkbox" id="newonly" name="newonly" onclick="newcarsonly()">
+    <label for="newonly">New Cars Only?</label>
+
+    <input type="radio" id="radiocarstatus" name="radiocarstatus" value="new" onclick="new_radiobutton()">
+    <label for="radiocarstatus">New</label>
+    <input type="radio" id="radiocarstatus" name="radiocarstatus" value="used" onclick="used_radiobutton()">
+    <label for="radiocarstatus">Used</label>
+    <input type="radio" id="radiocarstatus" name="radiocarstatus" value="" onclick="all_radiobutton()">
+    <label for="radiocarstatus">Both</label>
+
     <head>
         <link rel="stylesheet" href="https://use.typekit.net/kkc6mij.css">
 
@@ -415,9 +429,36 @@
             location.href = strurl;
 
            // alert(strurl);
-        }
+            }
 
-        window.onload = function () {
+        function newcarsonly() {
+             var newcarsonlyvalue = document.getElementById('newonly').checked;
+          //  alert(newcarsonlyvalue);
+            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&nw=" + newcarsonlyvalue;
+            alert(strurl);
+            location.href = strurl;
+
+            }
+
+            function new_radiobutton() {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=n";
+                alert(strurl);
+                location.href = strurl;
+            }
+
+            function used_radiobutton() {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=u";
+                alert(strurl);
+                location.href = strurl;
+            }
+
+            function all_radiobutton() {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode";
+                alert(strurl);
+                location.href = strurl;
+            }
+
+            window.onload = function () {
 
             const monthControl = document.querySelector('input[type="month"]');
             monthControl.value = "@sDate";
@@ -425,6 +466,19 @@
             monthControl.max = today.substring(0, 7);
             const teamControl = document.querySelector('select');
             teamControl.value = "@DeptCode";
+            var CarStatus_js = "@CarStatus";
+                var ele = document.getElementsByName('radiocarstatus');
+
+
+                if (CarStatus_js != "") {
+                    if (CarStatus_js != "n") {
+                        ele[1].checked = true;
+                    } else {
+                        ele[0].checked = true;
+                    }
+                } else {
+                    ele[2].checked = true;
+                }
 
                var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
