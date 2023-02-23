@@ -414,31 +414,56 @@
             const monthControl = document.querySelector('input[type="month"]');
             var sDateWork = (monthControl.value);
             sDateWork = sDateWork + "-01";
-            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+            if (monthControl.value == monthControl.max) {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + "@DeptCode";
+            } else {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+            }
             location.href = strurl;
 
             }
 
         function teampick() {
             const teamControl = document.querySelector('select');
+            const monthControl = document.querySelector('input[type="month"]');
             var sWork = (teamControl.value);
-            var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
+            if (monthControl.value == monthControl.max) {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + sWork;
+            } else
+            {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
+            }
             location.href = strurl;
                // alert(strurl);
             }
 
             function new_radiobutton() {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=n";
+                const monthControl = document.querySelector('input[type="month"]');
+                if (monthControl.value == monthControl.max) {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + "@DeptCode" + "&st=n";
+                } else {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=n";
+                }
                 location.href = strurl;
             }
 
             function used_radiobutton() {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=u";
+                const monthControl = document.querySelector('input[type="month"]');
+                if (monthControl.value == monthControl.max) {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + "@DeptCode" + "&st=u";
+                } else {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode" + "&st=u";
+                }
                 location.href = strurl;
             }
 
             function all_radiobutton() {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode";
+                const monthControl = document.querySelector('input[type="month"]');
+                if (monthControl.value == monthControl.max) {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + "@DeptCode";
+                } else {
+                    var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + "@sDate" + "&Team=" + "@DeptCode";
+                }
                 location.href = strurl;
             }
 
