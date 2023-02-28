@@ -18,6 +18,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="FIRSTNAME" Type="varchar" MaxLength="25" />
           <Property Name="LASTNAME" Type="varchar" MaxLength="25" />
           <Property Name="SalesRank" Type="int" />
+          <Property Name="SalesRank_New" Type="int" />
+          <Property Name="SalesRank_Used" Type="int" />
           <Property Name="SalesTeam" Type="nvarchar" MaxLength="50" />
           <Property Name="dept_code" Type="nvarchar" MaxLength="15" />
         </EntityType>
@@ -83,6 +85,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
     [EmployeePerformanceMTD].[FIRSTNAME] AS [FIRSTNAME], 
     [EmployeePerformanceMTD].[LASTNAME] AS [LASTNAME], 
     [EmployeePerformanceMTD].[SalesRank] AS [SalesRank], 
+    [EmployeePerformanceMTD].[SalesRank_New] AS [SalesRank_New], 
+    [EmployeePerformanceMTD].[SalesRank_Used] AS [SalesRank_Used], 
     [EmployeePerformanceMTD].[SalesTeam] AS [SalesTeam], 
     [EmployeePerformanceMTD].[dept_code] AS [dept_code]
     FROM [dbo].[EmployeePerformanceMTD] AS [EmployeePerformanceMTD]</DefiningQuery>
@@ -161,6 +165,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="SalesRank" Type="Int32" />
           <Property Name="SalesTeam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dept_code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SalesRank_New" Type="Int32" />
+          <Property Name="SalesRank_Used" Type="Int32" />
         </EntityType>
         <ComplexType Name="sp_ListOfSalesTeams_Result">
           <Property Type="String" Name="dept_code" Nullable="true" MaxLength="15" />
@@ -223,6 +229,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <EntitySetMapping Name="EmployeePerformanceMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
               <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
+                <ScalarProperty Name="SalesRank_Used" ColumnName="SalesRank_Used" />
+                <ScalarProperty Name="SalesRank_New" ColumnName="SalesRank_New" />
                 <ScalarProperty Name="dept_code" ColumnName="dept_code" />
                 <ScalarProperty Name="SalesTeam" ColumnName="SalesTeam" />
                 <ScalarProperty Name="SalesRank" ColumnName="SalesRank" />

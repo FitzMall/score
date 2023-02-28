@@ -23,5 +23,7 @@ namespace score.Models
         public Nullable<int> SalesRank { get; set; }
         public string SalesTeam { get; set; }
         public string dept_code { get; set; }
+        public Nullable<int> SalesRank_New { get; set; }
+        public Nullable<int> SalesRank_Used { get; set; }
     }
 }

@@ -112,10 +112,10 @@ namespace score.Views
              switch (st)
             {
                 case "n":
-                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED").OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     return View(SBoard);
                 case "u":
-                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED").OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
+                    SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     return View(SBoard);
                 default:
                     SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
