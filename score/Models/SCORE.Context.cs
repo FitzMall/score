@@ -62,5 +62,32 @@ namespace score.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListOfSalesTeams_Result1>("sp_ListOfSalesTeams");
         }
+    
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeeSalesBPPMTD_ByDate(Nullable<System.DateTime> parDate)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeeSalesBPPMTD_ByDate", parDateParameter);
+        }
+    
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeeSalesBPPMTD_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeeSalesBPPMTD_ByDate", mergeOption, parDateParameter);
+        }
+    
+        public virtual int sp_EmployeeSalesBPPMTD_ByDate1(Nullable<System.DateTime> parDate)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeSalesBPPMTD_ByDate1", parDateParameter);
+        }
     }
 }

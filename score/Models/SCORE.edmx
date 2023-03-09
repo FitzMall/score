@@ -73,6 +73,9 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
         <Function Name="sp_EmployeePerformanceMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parDate" Type="date" Mode="In" />
         </Function>
+        <Function Name="sp_EmployeeSalesBPPMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parDate" Type="date" Mode="In" />
+        </Function>
         <Function Name="sp_ListOfSalesTeams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
@@ -105,6 +108,12 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Parameter Name="parDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_ListOfSalesTeams" ReturnType="Collection(SalesCommissionModel.sp_ListOfSalesTeams_Result1)" />
+          <FunctionImport Name="sp_EmployeeSalesBPPMTD_ByDate" EntitySet="EmployeePerformanceMTDs" ReturnType="Collection(SalesCommissionModel.EmployeePerformanceMTD)">
+          <Parameter Name="parDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeeSalesBPPMTD_ByDate1">
+            <Parameter Name="parDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -252,6 +261,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate1" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

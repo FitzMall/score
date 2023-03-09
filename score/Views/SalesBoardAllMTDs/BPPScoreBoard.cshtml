@@ -1,0 +1,349 @@
+﻿@model IEnumerable<score.Models.EmployeePerformanceMTD>
+
+
+    @{
+        ViewBag.Title = "Team Scoreboard";
+        string AssociateName = "";
+        string Previous_AssociateName = "";
+        int rowName = 0;
+        DateTime ReportDate = ViewBag.ReportDate;
+
+        string ReportTitle = "Team Scoreboard";
+        string DeptCode = ViewBag.DeptCode;
+        string CarStatus = ViewBag.st;
+
+        string Team = DeptCode;
+        string sDate = ReportDate.ToString("yyyy-MM");
+        int FontSize_Name = 26;
+        string nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+
+        if (CarStatus == "n")
+        {
+            nexturl += "&st=n";
+        }
+
+        if (CarStatus == "u")
+        {
+            nexturl += "&st=u";
+        }
+
+        if (Team != "")
+        {
+            ReportTitle += (" " + Team);
+        }
+        var applicationPath = Request.ApplicationPath;
+        if (applicationPath == "/")
+        {
+            applicationPath = "";
+        }
+        int inc = 0;
+        int inc_DataPoints = 0;
+        int inc_DataPoints2 = 0;
+        int inc_DataPoints3 = 0;
+        int inc_DataPoints4 = 0;
+        int inc_DataPoints5 = 0;
+        int inc_DataPoints6 = 0;
+        int inc_DataPoints7 = 0;
+        int inc_DataPoints8 = 0;
+        int inc_DataPoints9 = 0;
+
+
+
+        string salespersonID = "";
+        string savedAssociateName = "";
+        ViewBag.DataPoints = "";
+        ViewBag.DataPoints2 = "";
+        ViewBag.DataPoints3 = "";
+        ViewBag.DataPoints4 = "";
+        ViewBag.DataPoints5 = "";
+        ViewBag.DataPoints6 = "";
+        ViewBag.DataPoints7 = "";
+        ViewBag.DataPoints8 = "";
+        ViewBag.DataPoints9 = "";
+        ViewBag.legend1 = "";
+        ViewBag.legend2 = "";
+        ViewBag.legend3 = "";
+        ViewBag.legend4 = "";
+        ViewBag.legend5 = "";
+        ViewBag.legend6 = "";
+        ViewBag.legend7 = "";
+        ViewBag.legend8 = "";
+        ViewBag.legend9 = "";
+
+        //    ViewBag.Pattern = "{ y: 1, label: \"vvvv\" },";
+
+
+    }
+
+
+    <!DOCTYPE HTML>
+    <html>
+
+    <input id="bday-month" type="month" name="bday-month" min="2017-12" max="2030-12" oninput="monthpick()" />
+
+
+
+    @foreach (var item in Model)
+    {
+        AssociateName = item.FIRSTNAME.ToUpper() + " " + item.LASTNAME.ToUpper();
+
+        if (AssociateName.Length > 13)
+        {
+            AssociateName = item.FIRSTNAME.ToUpper().Substring(0, 1) + "." + item.LASTNAME.ToUpper();
+        }
+
+        if (AssociateName.Length > 13)
+        {
+            AssociateName = item.LASTNAME.ToUpper();
+        }
+
+        if (AssociateName.Length > 13)
+        {
+            AssociateName = item.FIRSTNAME.ToUpper();
+        }
+
+        switch ((string)item.VehicleMake)
+        {
+
+            case "BPP":
+                if (inc_DataPoints > 0)
+                {
+                    ViewBag.DataPoints += ",";
+                }
+
+                ViewBag.legend1 = ((string)item.VehicleMake);
+
+                ViewBag.DataPoints += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+
+                ViewBag.DataPoints += "}";
+                inc_DataPoints += (inc + 1);
+                break;
+
+            case "ZURICH":
+                if (inc_DataPoints2 > 0)
+                {
+                    ViewBag.DataPoints2 += ",";
+                }
+
+                ViewBag.legend2 = ((string)item.VehicleMake);
+
+                ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+                ViewBag.DataPoints2 += "}";
+                inc_DataPoints2 += (inc + 1);
+                break;
+
+            case "BOTH":
+                if (inc_DataPoints9 > 0)
+                {
+                    ViewBag.DataPoints9 += ",";
+                }
+
+                ViewBag.legend9= ((string)item.VehicleMake);
+
+                ViewBag.DataPoints9 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+                ViewBag.DataPoints9 += "}";
+                inc_DataPoints9 += (inc + 1);
+                break;
+        };
+
+        inc += (1);
+
+        if (Previous_AssociateName != AssociateName)
+        {
+            Previous_AssociateName = AssociateName;
+            rowName += 1;
+        }
+
+        salespersonID = item.sl_SalesAssociate1;
+        savedAssociateName = AssociateName + salespersonID;
+
+        if (inc == 1)
+        {
+            Team = "" + item.SalesTeam;
+            ReportTitle = "" + Team;
+            ReportTitle += " " + ViewBag.MonthDisplay + " " + ViewBag.YrShow;
+        }
+
+        if (rowName >= 27)
+        {
+            //reduce size of names to fit
+            FontSize_Name = 18;
+        }
+
+        if (rowName >= 50)
+        {
+            // lose the title - we need the room
+            //ReportTitle = "";
+            //reduce size of names to fit
+            FontSize_Name = 11;
+        }
+
+    }
+
+    <label for="cars">Choose a Team:</label>
+    <select id="cars" name="cars" onchange="teampick()">
+        @foreach (var item in ViewBag.TeamsList)
+        {
+            <option value=@item.dept_code>@item.dept_desc</option>
+        }
+    </select>
+    @DeptCode
+
+    <head>
+        <link rel="stylesheet" href="https://use.typekit.net/kkc6mij.css">
+
+        <script>
+
+        function monthpick() {
+            const monthControl = document.querySelector('input[type="month"]');
+            var sDateWork = (monthControl.value);
+            sDateWork = sDateWork + "-01";
+            if (monthControl.value == monthControl.max) {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?Team=" + "@DeptCode";
+            } else {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+            }
+            location.href = strurl;
+
+            }
+
+        function teampick() {
+            const teamControl = document.querySelector('select');
+            const monthControl = document.querySelector('input[type="month"]');
+            var sWork = (teamControl.value);
+            if (monthControl.value == monthControl.max) {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?Team=" + sWork;
+            } else
+            {
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
+            }
+            location.href = strurl;
+
+            }
+
+            window.onload = function () {
+
+            const monthControl = document.querySelector('input[type="month"]');
+            monthControl.value = "@sDate";
+            let today = new Date().toISOString().slice(0, 10)
+            monthControl.max = today.substring(0, 7);
+            const teamControl = document.querySelector('select');
+            teamControl.value = "@DeptCode";
+
+               var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+
+                title: {
+                    text: "@ReportTitle",
+                    fontFamily: "sofia-pro, sans-serif",
+                    fontWeight: "normal",
+                },
+                axisX: {
+                    interval: 1,
+                    labelFontSize: @FontSize_Name,
+                },
+                axisY: {
+                    interval: 1,
+                    labelFontSize: 18,
+                }, axisY2: {
+                    interlacedColor: "rgba(1,77,101,.2)",
+                    gridColor: "rgba(1,77,101,.1)",
+                },
+                data: [{
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend1",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#304d66",@* color 1 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend2",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#3d828d",@*  color 2 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints2)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend3",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#304d66",@* color 1 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints3)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend4",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#3d828d",@* color 2 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints4)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend5",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#3d828d",@* color 2 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints5)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend6",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#304d66",@* color 1 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints6)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend7",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#3d828d",@* color 2  *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints7)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend8",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#3d828d",@* color 2 *@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints8)]
+                },
+                {
+                    type: "stackedBar",
+                    showInLegend: "true",
+                    name: "@ViewBag.legend9",
+                    xValueFormatString: "string",
+                    yValueFormatString: "#",
+                    color: "#f3b15d",@*used color*@
+                    dataPoints: [@Html.Raw(ViewBag.DataPoints9)]
+                }
+
+                ]
+            });
+
+
+                            chart.render();
+
+                        }
+        </script>
+        <meta http-equiv="refresh" content="15;url=@nexturl" />
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 850px; max-width: 1900px; left: auto; margin: 0px auto"></div>
+        <script src="../scripts/canvasjs.min.js"></script>
+
+    </body>
+    </html>
