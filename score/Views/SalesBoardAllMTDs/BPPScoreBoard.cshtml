@@ -15,7 +15,16 @@
         string Team = DeptCode;
         string sDate = ReportDate.ToString("yyyy-MM");
         int FontSize_Name = 26;
-        string nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+        string nexturl = "";
+        if (ReportDate.Month == DateTime.Now.Month)
+        {
+             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + DeptCode;
+        }
+        else
+        {
+             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+        }
+
 
         if (CarStatus == "n")
         {
