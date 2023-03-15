@@ -25,5 +25,6 @@ namespace score.Models
         public string dept_code { get; set; }
         public Nullable<int> SalesRank_New { get; set; }
         public Nullable<int> SalesRank_Used { get; set; }
+        public Nullable<decimal> PersonalTotal { get; set; }
     }
 }

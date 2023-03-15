@@ -167,7 +167,7 @@ namespace score.Views
 
             //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
             var context = new SalesCommissionEntities();
-            var MTD = context.sp_EmployeeSalesBPPMTD_ByDate(dt);
+            var MTD = context.sp_EmployeePerformanceALL_ByDate(dt);
 
             var teamslist = context.sp_ListOfSalesTeams();
             ViewBag.TeamsList = teamslist;

@@ -22,6 +22,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="SalesRank_Used" Type="int" />
           <Property Name="SalesTeam" Type="nvarchar" MaxLength="50" />
           <Property Name="dept_code" Type="nvarchar" MaxLength="15" />
+          <Property Name="PersonalTotal" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -69,6 +70,9 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="DAY31" Type="int" />
           <Property Name="MTD" Type="int" />
         </EntityType>
+        <Function Name="sp_EmployeePerformanceALL_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parDate" Type="date" Mode="In" />
+        </Function>
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_EmployeePerformanceMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parDate" Type="date" Mode="In" />
@@ -91,7 +95,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
     [EmployeePerformanceMTD].[SalesRank_New] AS [SalesRank_New], 
     [EmployeePerformanceMTD].[SalesRank_Used] AS [SalesRank_Used], 
     [EmployeePerformanceMTD].[SalesTeam] AS [SalesTeam], 
-    [EmployeePerformanceMTD].[dept_code] AS [dept_code]
+    [EmployeePerformanceMTD].[dept_code] AS [dept_code], 
+    [EmployeePerformanceMTD].[PersonalTotal] AS [PersonalTotal]
     FROM [dbo].[EmployeePerformanceMTD] AS [EmployeePerformanceMTD]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -112,7 +117,10 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Parameter Name="parDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_EmployeeSalesBPPMTD_ByDate1">
-            <Parameter Name="parDate" Mode="In" Type="DateTime" />
+          <Parameter Name="parDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeePerformanceALL_ByDate" EntitySet="EmployeePerformanceMTDs" ReturnType="Collection(SalesCommissionModel.EmployeePerformanceMTD)">
+          <Parameter Name="parDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
@@ -176,6 +184,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <Property Name="dept_code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="SalesRank_New" Type="Int32" />
           <Property Name="SalesRank_Used" Type="Int32" />
+          <Property Name="PersonalTotal" Type="Decimal" Precision="5" Scale="2" />
         </EntityType>
         <ComplexType Name="sp_ListOfSalesTeams_Result">
           <Property Type="String" Name="dept_code" Nullable="true" MaxLength="15" />
@@ -238,6 +247,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <EntitySetMapping Name="EmployeePerformanceMTDs">
             <EntityTypeMapping TypeName="SalesCommissionModel.EmployeePerformanceMTD">
               <MappingFragment StoreEntitySet="EmployeePerformanceMTD">
+                <ScalarProperty Name="PersonalTotal" ColumnName="PersonalTotal" />
                 <ScalarProperty Name="SalesRank_Used" ColumnName="SalesRank_Used" />
                 <ScalarProperty Name="SalesRank_New" ColumnName="SalesRank_New" />
                 <ScalarProperty Name="dept_code" ColumnName="dept_code" />
@@ -263,6 +273,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate1" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
           <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceALL_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceALL_ByDate" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

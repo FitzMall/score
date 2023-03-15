@@ -126,22 +126,7 @@
 
                 ViewBag.DataPoints += "}";
                 inc_DataPoints += (inc + 1);
-                break;
 
-            case "ZURICH":
-                if (inc_DataPoints2 > 0)
-                {
-                    ViewBag.DataPoints2 += ",";
-                }
-
-                ViewBag.legend2 = ((string)item.VehicleMake);
-
-                ViewBag.DataPoints2 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
-                ViewBag.DataPoints2 += "}";
-                inc_DataPoints2 += (inc + 1);
-                break;
-
-            case "BOTH":
                 if (inc_DataPoints9 > 0)
                 {
                     ViewBag.DataPoints9 += ",";
@@ -149,7 +134,7 @@
 
                 ViewBag.legend9= ((string)item.VehicleMake);
 
-                ViewBag.DataPoints9 += "{ y: " + ((decimal)item.MTD) + ", label: \"" + AssociateName + "\" ";
+                ViewBag.DataPoints9 += "{ y: " + (((decimal)item.PersonalTotal) - ((decimal)item.MTD)) + ", label: \"" + AssociateName + "\" ";
                 ViewBag.DataPoints9 += "}";
                 inc_DataPoints9 += (inc + 1);
                 break;
@@ -332,11 +317,11 @@
                 },
                 {
                     type: "stackedBar",
-                    showInLegend: "true",
-                    name: "@ViewBag.legend9",
+                    showInLegend: "false",
+                    name: "",
                     xValueFormatString: "string",
                     yValueFormatString: "#",
-                    color: "#f3b15d",@*used color*@
+                    color: "#DCDCDC",@*used color*@
                     dataPoints: [@Html.Raw(ViewBag.DataPoints9)]
                 }
 
