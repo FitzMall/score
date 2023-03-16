@@ -16,8 +16,12 @@
         string sDate = ReportDate.ToString("yyyy-MM");
         int FontSize_Name = 26;
         string nexturl = Url.Content("~/") + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+        string refresh = "refresh";
 
-
+        if (sDate != DateTime.Today.ToString("yyyy-MM"))
+        {
+            refresh = "";
+        }
 
         if (Team != "")
         {
@@ -604,7 +608,7 @@
 
                         }
         </script>
-        <meta http-equiv="refresh" content="15;url=@nexturl" />
+        <meta http-equiv="@refresh" content="15;url=@nexturl" />
     </head>
     <body>
         <div id="chartContainer" style="height: 850px; max-width: 1900px; left: auto; margin: 0px auto"></div>

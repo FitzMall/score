@@ -16,13 +16,20 @@
         string sDate = ReportDate.ToString("yyyy-MM");
         int FontSize_Name = 26;
         string nexturl = "";
+        string refresh = "refresh";
+
+        if (sDate != DateTime.Today.ToString("yyyy-MM"))
+        {
+            refresh = "";
+        }
+
         if (ReportDate.Month == DateTime.Now.Month)
         {
-             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?Team=" + DeptCode;
+            nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?Team=" + DeptCode;
         }
         else
         {
-             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+            nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
         }
 
 
@@ -333,7 +340,7 @@
 
                         }
         </script>
-        <meta http-equiv="refresh" content="15;url=@nexturl" />
+        <meta http-equiv="@refresh" content="15;url=@nexturl" />
     </head>
     <body>
         <div id="chartContainer" style="height: 850px; max-width: 1900px; left: auto; margin: 0px auto"></div>
