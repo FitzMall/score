@@ -226,6 +226,7 @@
     <Content Include="Views\SalesBoardAllMTDs\ScoreBoard.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\TeamScoreBoard.cshtml" />
     <Content Include="Views\SalesBoardAllMTDs\BPPScoreBoard.cshtml" />
+    <Content Include="Views\SalesBoardAllMTDs\ZurichScoreBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

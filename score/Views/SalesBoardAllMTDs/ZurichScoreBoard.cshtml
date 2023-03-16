@@ -18,11 +18,11 @@
         string nexturl = "";
         if (ReportDate.Month == DateTime.Now.Month)
         {
-             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?Team=" + DeptCode;
+             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?Team=" + DeptCode;
         }
         else
         {
-             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/ZurichScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+             nexturl = Url.Content("~/") + "SalesBoardAllMTDs/TeamScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
         }
 
 
@@ -114,7 +114,7 @@
         switch ((string)item.VehicleMake)
         {
 
-            case "BPP":
+            case "ZURICH":
                 if (inc_DataPoints > 0)
                 {
                     ViewBag.DataPoints += ",";
@@ -193,9 +193,9 @@
             var sDateWork = (monthControl.value);
             sDateWork = sDateWork + "-01";
             if (monthControl.value == monthControl.max) {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?Team=" + "@DeptCode";
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/ZurichScoreBoard?Team=" + "@DeptCode";
             } else {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/ZurichScoreBoard?dt=" + sDateWork + "&Team=" + "@DeptCode";
             }
             location.href = strurl;
 
@@ -206,10 +206,10 @@
             const monthControl = document.querySelector('input[type="month"]');
             var sWork = (teamControl.value);
             if (monthControl.value == monthControl.max) {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?Team=" + sWork;
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/ZurichScoreBoard?Team=" + sWork;
             } else
             {
-                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
+                var strurl = '@Url.Content("~/")' + "SalesBoardAllMTDs/ZurichScoreBoard?dt=" + "@sDate" + "&Team=" + sWork;
             }
             location.href = strurl;
 
@@ -318,7 +318,7 @@
                 {
                     type: "stackedBar",
                     showInLegend: "true",
-                    name: "Without BPP",
+                    name: "Without Zurich",
                     xValueFormatString: "string",
                     yValueFormatString: "#",
                     color: "#DCDCDC",@*total remaining car sales color*@
