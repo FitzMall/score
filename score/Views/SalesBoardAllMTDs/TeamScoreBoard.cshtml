@@ -20,8 +20,23 @@
 
         if (sDate != DateTime.Today.ToString("yyyy-MM"))
         {
-          //  refresh = "";
+            //  refresh = "";
         }
+
+        if (sDate != DateTime.Today.ToString("yyyy-MM"))
+        {
+            // refresh = "";
+        }
+
+        if (ReportDate.Month == DateTime.Now.Month)
+        {
+            nexturl = Url.Content("~/") + "SalesBoardAllMTDs/BPPScoreBoard?Team=" + DeptCode;
+        }
+        else
+        {
+            nexturl = Url.Content("~/") + "SalesBoardAllMTDs/BPPScoreBoard?dt=" + sDate + "&Team=" + DeptCode;
+        }
+
 
         if (Team != "")
         {
