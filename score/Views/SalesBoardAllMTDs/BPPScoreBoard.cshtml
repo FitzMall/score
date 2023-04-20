@@ -141,7 +141,13 @@
 
                 ViewBag.legend9= ((string)item.VehicleMake);
 
-                ViewBag.DataPoints9 += "{ y: " + (((decimal)item.PersonalTotal) - ((decimal)item.MTD)) + ", label: \"" + AssociateName + "\" ";
+                if (((decimal)item.PersonalTotal) < (decimal)item.MTD){
+                    ViewBag.DataPoints9 += "{ y: 0, label: \"" + AssociateName + "\" ";
+                }
+                else
+                {
+                    ViewBag.DataPoints9 += "{ y: " + (((decimal)item.PersonalTotal) - ((decimal)item.MTD)) + ", label: \"" + AssociateName + "\" ";
+                }
                 ViewBag.DataPoints9 += "}";
                 inc_DataPoints9 += (inc + 1);
                 break;
