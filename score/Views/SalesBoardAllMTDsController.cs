@@ -90,9 +90,9 @@ namespace score.Views
             sReportDate = dtfi.GetMonthName(dReportDate.Month) + " " + (dReportDate.Year.ToString());
             ViewBag.ReportDate = (dReportDate);
 
-            //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
+            //uses Stored Procedure sp_EmployeePerformanceALL_ByDate 
             var context = new SalesCommissionEntities();
-            var MTD = context.sp_EmployeePerformanceMTD_ByDate(dt);
+            var MTD = context.sp_EmployeePerformanceALL_ByDate(dt);
 
             var teamslist = context.sp_ListOfSalesTeams();
             ViewBag.TeamsList = teamslist;
@@ -113,7 +113,7 @@ namespace score.Views
                 case "n":
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0) { 
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -122,7 +122,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -131,7 +131,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -165,7 +165,7 @@ namespace score.Views
             sReportDate = dtfi.GetMonthName(dReportDate.Month) + " " + (dReportDate.Year.ToString());
             ViewBag.ReportDate = (dReportDate);
 
-            //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
+            //uses Stored Procedure sp_EmployeePerformanceALL_ByDate 
             var context = new SalesCommissionEntities();
             var MTD = context.sp_EmployeePerformanceALL_ByDate(dt);
 
@@ -189,7 +189,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -198,7 +198,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -207,7 +207,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -241,7 +241,7 @@ namespace score.Views
             sReportDate = dtfi.GetMonthName(dReportDate.Month) + " " + (dReportDate.Year.ToString());
             ViewBag.ReportDate = (dReportDate);
 
-            //uses Stored Procedure sp_EmployeePerformanceMTD_ByDate 
+            //uses Stored Procedure sp_EmployeePerformanceALL_ByDate 
             var context = new SalesCommissionEntities();
             var MTD = context.sp_EmployeePerformanceALL_ByDate(dt);
 
@@ -265,7 +265,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake != "USED" && a.SalesRank_New > 0).OrderBy(a => a.SalesRank_New).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -274,7 +274,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team && a.VehicleMake == "USED" && a.SalesRank_Used > 0).OrderBy(a => a.SalesRank_Used).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
@@ -283,7 +283,7 @@ namespace score.Views
                     SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     if (SBoard.Count() == 0)
                     {
-                        MTD = context.sp_EmployeePerformanceMTD_ByDate(LastMonthdt);
+                        MTD = context.sp_EmployeePerformanceALL_ByDate(LastMonthdt);
                         dReportDate = (DateTime)LastMonthdt;
                         SBoard = MTD.Where(a => a.dept_code == Team).OrderBy(a => a.SalesRank).ThenBy(a => a.sl_SalesAssociate1).ToList();
                     }
