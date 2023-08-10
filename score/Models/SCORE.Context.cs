@@ -40,22 +40,26 @@ namespace score.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceMTD_AllLocations");
         }
     
-        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate)
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceMTD_ByDate(Nullable<System.DateTime> parDate)
         {
             var parDateParameter = parDate.HasValue ?
                 new ObjectParameter("parDate", parDate) :
                 new ObjectParameter("parDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", parDateParameter);
+
+                 return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceMTD_ByDate", parDateParameter);
+
+
+
         }
     
-        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceMTD_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
         {
             var parDateParameter = parDate.HasValue ?
                 new ObjectParameter("parDate", parDate) :
                 new ObjectParameter("parDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption, parDateParameter);
+
+             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceMTD_ByDate", mergeOption, parDateParameter);
+
         }
     
         public virtual ObjectResult<sp_ListOfSalesTeams_Result1> sp_ListOfSalesTeams()
@@ -90,8 +94,35 @@ namespace score.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeSalesBPPMTD_ByDate1", parDateParameter);
         }
     
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
+            if (parDate != DateTime.Today)
+            {
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", parDateParameter);
+            }
+            else 
+            {
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today");
+            }
+        }
+    
+        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
+        {
+            var parDateParameter = parDate.HasValue ?
+                new ObjectParameter("parDate", parDate) :
+                new ObjectParameter("parDate", typeof(System.DateTime));
 
-
+            if (parDate != DateTime.Today)
+            {
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption, parDateParameter);
+            } else
+            {
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today", mergeOption);
+            }
+        }
     
         public virtual int sp_EmployeePerformanceALL_TEST(Nullable<System.DateTime> parDate)
         {
@@ -100,6 +131,11 @@ namespace score.Models
                 new ObjectParameter("parDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceALL_TEST", parDateParameter);
+        }
+    
+        public virtual int sp_EmployeePerformanceTABLE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeePerformanceTABLE");
         }
     }
 }

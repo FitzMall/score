@@ -90,7 +90,6 @@ namespace score.Views
             sReportDate = dtfi.GetMonthName(dReportDate.Month) + " " + (dReportDate.Year.ToString());
             ViewBag.ReportDate = (dReportDate);
 
-            //uses Stored Procedure sp_EmployeePerformanceALL_ByDate 
             var context = new SalesCommissionEntities();
             var MTD = context.sp_EmployeePerformanceALL_ByDate(dt);
 

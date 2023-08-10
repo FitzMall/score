@@ -73,16 +73,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
         <Function Name="sp_EmployeePerformanceALL_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parDate" Type="date" Mode="In" />
         </Function>
-        <Function Name="sp_EmployeePerformanceALL_TEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="parDate" Type="date" Mode="In" />
-        </Function>
         <Function Name="sp_EmployeePerformanceMTD_AllLocations_Calendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_EmployeePerformanceMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="parDate" Type="date" Mode="In" />
-        </Function>
-        <Function Name="sp_EmployeeSalesBPPMTD_ByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="parDate" Type="date" Mode="In" />
-        </Function>
+        <Function Name="sp_EmployeePerformanceTABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListOfSalesTeams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SalesCommissionModelStoreContainer">
           <EntitySet Name="SalesBoardAllMTD" EntityType="Self.SalesBoardAllMTD" Schema="dbo" store:Type="Tables" />
@@ -128,6 +120,7 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
           <FunctionImport Name="sp_EmployeePerformanceALL_TEST">
             <Parameter Name="parDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="sp_EmployeePerformanceTABLE" />
           </EntityContainer>
         <EntityType Name="SalesBoardAllMTD">
           <Key>
@@ -268,7 +261,6 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceMTD_ByDate" />
           <FunctionImportMapping FunctionImportName="sp_ListOfSalesTeams" FunctionName="SalesCommissionModel.Store.sp_ListOfSalesTeams">
           <ResultMapping>
               <ComplexTypeMapping TypeName="SalesCommissionModel.sp_ListOfSalesTeams_Result1">
@@ -277,10 +269,8 @@ warning 6002: The table/view 'SalesCommission.dbo.EmployeePerformanceMTD' does n
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate1" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
-          <FunctionImportMapping FunctionImportName="sp_EmployeeSalesBPPMTD_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeeSalesBPPMTD_ByDate" />
           <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceALL_ByDate" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceALL_ByDate" />
-          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceALL_TEST" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceALL_TEST" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeePerformanceTABLE" FunctionName="SalesCommissionModel.Store.sp_EmployeePerformanceTABLE" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
