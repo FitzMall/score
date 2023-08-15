@@ -14,7 +14,9 @@ namespace score.Models
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Web.Caching;
+    using System.Collections.Generic;
+
     public partial class SalesCommissionEntities : DbContext
     {
         public SalesCommissionEntities()
@@ -94,22 +96,26 @@ namespace score.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeSalesBPPMTD_ByDate1", parDateParameter);
         }
     
-        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate)
+        public virtual List<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate)
         {
             var parDateParameter = parDate.HasValue ?
                 new ObjectParameter("parDate", parDate) :
                 new ObjectParameter("parDate", typeof(System.DateTime));
-            if (parDate != DateTime.Today)
+
+            var x = new Cache();
+            
+            List<EmployeePerformanceMTD> empPerform = x["sp_EmployeePerformanceALL_ByDate"] as List<EmployeePerformanceMTD>;
+            if (empPerform == null) //not in cache
             {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", parDateParameter);
+                empPerform = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", parDateParameter).ToList();
+                x["sp_EmployeePerformanceALL_ByDate"] = empPerform;
             }
-            else 
-            {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today");
-            }
+
+            return empPerform;
+
         }
     
-        public virtual ObjectResult<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
+        public virtual List<EmployeePerformanceMTD> sp_EmployeePerformanceALL_ByDate(Nullable<System.DateTime> parDate, MergeOption mergeOption)
         {
             var parDateParameter = parDate.HasValue ?
                 new ObjectParameter("parDate", parDate) :
@@ -117,10 +123,10 @@ namespace score.Models
 
             if (parDate != DateTime.Today)
             {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption, parDateParameter);
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption, parDateParameter).ToList();
             } else
             {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today", mergeOption);
+                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today", mergeOption).ToList();
             }
         }
     
