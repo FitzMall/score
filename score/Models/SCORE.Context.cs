@@ -103,17 +103,14 @@ namespace score.Models
                 new ObjectParameter("parDate", typeof(System.DateTime));
 
             var x = new Cache();
-           
-            List<EmployeePerformanceMTD> empPerform = x["sp_EmployeePerformanceALL_ByDate"] as List<EmployeePerformanceMTD>;
-            if (parDate != System.DateTime.Today)
-            {
-                empPerform = null;  // clear cache
-            }
+            string CacheName = "empPerform" + parDate.Value.Month.ToString().Trim() + parDate.Value.Year.ToString().Trim();
+
+            List<EmployeePerformanceMTD> empPerform = x[CacheName] as List<EmployeePerformanceMTD>;
+
             if (empPerform == null) //not in cache
             {
                 empPerform = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", parDateParameter).ToList();
-
-                x.Insert("sp_EmployeePerformanceALL_ByDate", empPerform, null, DateTime.UtcNow.AddHours(2.25), System.Web.Caching.Cache.NoSlidingExpiration);                
+                x.Insert(CacheName, empPerform, null, DateTime.UtcNow.AddHours(2.25), System.Web.Caching.Cache.NoSlidingExpiration);                
             } 
 
             return empPerform;
