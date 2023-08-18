@@ -122,14 +122,18 @@ namespace score.Models
             var parDateParameter = parDate.HasValue ?
                 new ObjectParameter("parDate", parDate) :
                 new ObjectParameter("parDate", typeof(System.DateTime));
+            var x = new Cache();
+            string CacheName = "empPerform" + parDate.Value.Month.ToString().Trim() + parDate.Value.Year.ToString().Trim();
 
-            if (parDate != DateTime.Today)
+            List<EmployeePerformanceMTD> empPerform = x[CacheName] as List<EmployeePerformanceMTD>;
+
+            if (empPerform == null) //not in cache
             {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption, parDateParameter).ToList();
-            } else
-            {
-                return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_Today", mergeOption).ToList();
+                empPerform = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeePerformanceMTD>("sp_EmployeePerformanceALL_ByDate", mergeOption ,parDateParameter).ToList();
+                x.Insert(CacheName, empPerform, null, DateTime.UtcNow.AddHours(2.25), System.Web.Caching.Cache.NoSlidingExpiration);
             }
+
+            return empPerform;
         }
     
         public virtual int sp_EmployeePerformanceALL_TEST(Nullable<System.DateTime> parDate)
